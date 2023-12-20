@@ -1009,6 +1009,9 @@
 		2ECB343B2A98FEBE00E0F9BB /* SetFiltersListCoordinatorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB343A2A98FEBE00E0F9BB /* SetFiltersListCoordinatorAssembly.swift */; };
 		2ECB343D2A98FFB500E0F9BB /* SetFiltersListModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB343C2A98FFB500E0F9BB /* SetFiltersListModuleAssembly.swift */; };
 		2ECBD18F2B14F9BF007F47FC /* RelationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECBD18E2B14F9BF007F47FC /* RelationsInteractor.swift */; };
+		2ECC9D3B2B33362900A641B1 /* EmbedBlockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC9D3A2B33362900A641B1 /* EmbedBlockViewModel.swift */; };
+		2ECC9D3D2B33364A00A641B1 /* EmbedBlockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC9D3C2B33364A00A641B1 /* EmbedBlockConfiguration.swift */; };
+		2ECC9D3F2B3336B700A641B1 /* EmbedBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC9D3E2B3336B700A641B1 /* EmbedBlockView.swift */; };
 		2ECD122B28AFE58E00BD464A /* TitleWithIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD122A28AFE58E00BD464A /* TitleWithIconView.swift */; };
 		2ECD123028AFE6A900BD464A /* TitleWithIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD122F28AFE6A900BD464A /* TitleWithIconStyle.swift */; };
 		2ED9F4392A8E8F0900BE0A6B /* SetViewSettingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9F4382A8E8F0900BE0A6B /* SetViewSettingsList.swift */; };
@@ -2689,6 +2692,9 @@
 		2ECB343A2A98FEBE00E0F9BB /* SetFiltersListCoordinatorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFiltersListCoordinatorAssembly.swift; sourceTree = "<group>"; };
 		2ECB343C2A98FFB500E0F9BB /* SetFiltersListModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFiltersListModuleAssembly.swift; sourceTree = "<group>"; };
 		2ECBD18E2B14F9BF007F47FC /* RelationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationsInteractor.swift; sourceTree = "<group>"; };
+		2ECC9D3A2B33362900A641B1 /* EmbedBlockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedBlockViewModel.swift; sourceTree = "<group>"; };
+		2ECC9D3C2B33364A00A641B1 /* EmbedBlockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedBlockConfiguration.swift; sourceTree = "<group>"; };
+		2ECC9D3E2B3336B700A641B1 /* EmbedBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedBlockView.swift; sourceTree = "<group>"; };
 		2ECD122A28AFE58E00BD464A /* TitleWithIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithIconView.swift; sourceTree = "<group>"; };
 		2ECD122F28AFE6A900BD464A /* TitleWithIconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithIconStyle.swift; sourceTree = "<group>"; };
 		2ED9F4382A8E8F0900BE0A6B /* SetViewSettingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewSettingsList.swift; sourceTree = "<group>"; };
@@ -3842,6 +3848,7 @@
 		0A10CC5A248EC2EE000FF498 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				2ECC9D392B3335F600A641B1 /* Embed */,
 				2E92219B294B8B0100968750 /* DataView */,
 				2A9D298E28BCC0F900789AC7 /* NonExistent */,
 				C921517328980172007FC95D /* Shimmer */,
@@ -7025,6 +7032,16 @@
 				2ECB343A2A98FEBE00E0F9BB /* SetFiltersListCoordinatorAssembly.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2ECC9D392B3335F600A641B1 /* Embed */ = {
+			isa = PBXGroup;
+			children = (
+				2ECC9D3A2B33362900A641B1 /* EmbedBlockViewModel.swift */,
+				2ECC9D3C2B33364A00A641B1 /* EmbedBlockConfiguration.swift */,
+				2ECC9D3E2B3336B700A641B1 /* EmbedBlockView.swift */,
+			);
+			path = Embed;
 			sourceTree = "<group>";
 		};
 		2ECD122C28AFE5DE00BD464A /* TitleWIthIconView */ = {
@@ -10442,6 +10459,7 @@
 				3D44985C26D57773005A3E06 /* DismissHandler.swift in Sources */,
 				3D93D561270B3FC500614E29 /* UINavigationController+Extension.swift in Sources */,
 				2A6F5046288A8F0B00ED6E2E /* ImageAssets.swift in Sources */,
+				2ECC9D3B2B33362900A641B1 /* EmbedBlockViewModel.swift in Sources */,
 				2ADD66732A6ECA0100266F57 /* CoreGraphics+Hash.swift in Sources */,
 				2AFEED162A73AE8C00D7A45B /* HomeWidgetsCoordinatorView.swift in Sources */,
 				531629392632BD0B000D6780 /* StyleCellConfiguration.swift in Sources */,
@@ -10810,6 +10828,7 @@
 				12B691D227F4CB5D00A0C336 /* ImageGuideline.swift in Sources */,
 				C9E939D428538B600089CB98 /* TextBlockActionHandler.swift in Sources */,
 				12FD9D29276717CF00991886 /* RelationTag.swift in Sources */,
+				2ECC9D3D2B33364A00A641B1 /* EmbedBlockConfiguration.swift in Sources */,
 				86AA5B312A9E06D300816700 /* TextShareView.swift in Sources */,
 				2A4063672A5DB55600ECEA79 /* PasteboardFile.swift in Sources */,
 				53D4088827EC9EFE00495335 /* ObjectPreviewView.swift in Sources */,
@@ -10904,6 +10923,7 @@
 				3D1CEC2F27F4D9F7000D36BA /* CalendarExtension.swift in Sources */,
 				2AD741292993DB27004BD223 /* BinLinkWidgetViewModel.swift in Sources */,
 				2AE906F1297043A60044A10A /* EditorSetRouter.swift in Sources */,
+				2ECC9D3F2B3336B700A641B1 /* EmbedBlockView.swift in Sources */,
 				3D1D840F26F4AC330091A78A /* TextTriggerSymbols.swift in Sources */,
 				2EAA14022AA63918000A712A /* SetViewSettingsGroupByModuleAssembly.swift in Sources */,
 				12FD9D2B2767180A00991886 /* RelationUnknown.swift in Sources */,

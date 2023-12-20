@@ -16,6 +16,7 @@ public enum BlockContent: Hashable {
     case tableColumn
     case tableRow(BlockTableRow)
     case widget(BlockWidget)
+    case embed(BlockEmbed)
     case unsupported
     
     public var type: BlockContentType {
@@ -50,6 +51,8 @@ public enum BlockContent: Hashable {
             return .tableRow
         case let .widget(widget):
             return .widget(widget.layout)
+        case let .embed(embed):
+            return .embed(url: embed.url)
         case .unsupported:
             return .text(.text)
         }

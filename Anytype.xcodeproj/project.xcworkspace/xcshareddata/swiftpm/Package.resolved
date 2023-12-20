@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "hcvimeovideoextractor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/superm0/HCVimeoVideoExtractor.git",
+      "state" : {
+        "revision" : "7f985183fe60dd66a366f67d9475c45938608b1a",
+        "version" : "0.0.4"
+      }
+    },
+    {
       "identity" : "highlightr",
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:raspu/Highlightr.git",

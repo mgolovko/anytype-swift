@@ -1,4 +1,5 @@
 import AnytypeCore
+import ProtobufMessages
 
 public extension BlockLink {
 
@@ -71,3 +72,22 @@ public struct BlockLink: Hashable, Equatable {
         )
     }
 }
+
+public struct BlockEmbed: Hashable, Equatable {
+    public let url: String
+    
+    public init(url: String) {
+        self.url = url
+    }
+}
+
+public extension Anytype_Model_Block.Content.Latex {
+    var blockContent: BlockContent {
+        .embed(asModel)
+    }
+    
+    var asModel: BlockEmbed {
+        BlockEmbed(url: text)
+    }
+}
+

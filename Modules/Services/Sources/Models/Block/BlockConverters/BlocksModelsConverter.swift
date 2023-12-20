@@ -21,7 +21,8 @@ public enum BlocksModelsConverter {
         case .tableColumn: return BlockContent.tableColumn
         case .tableRow(let data): return data.blockContent
         case .widget(let data): return try? data.blockContent
-        case .icon, .latex:
+        case .latex(let data): return data.blockContent
+        case .icon:
             return .unsupported
         }
     }
@@ -54,7 +55,8 @@ public enum BlocksModelsConverter {
         case .widget:
             anytypeAssertionFailure("Not suppoted converter from widget to middleware")
             return nil
-            
+        case .embed:
+            return .latex(Anytype_Model_Block.Content.Latex())
         }
     }
 }

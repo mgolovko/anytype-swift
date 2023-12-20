@@ -16,7 +16,7 @@ public extension BlockInformation {
         case .smartblock, .layout, .tableRow, .tableColumn:
             return .meta
         case .text, .file, .divider, .bookmark, .link, .featuredRelations, .relation, .dataView, .table,
-                .tableOfContents, .widget, .unsupported:
+                .tableOfContents, .widget, .embed, .unsupported:
             return .block
         }
     }

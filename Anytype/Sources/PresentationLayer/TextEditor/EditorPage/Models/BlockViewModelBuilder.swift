@@ -303,6 +303,11 @@ final class BlockViewModelBuilder {
                     self?.router.showPage(data: data)
                 }
             )
+        case let .embed(data):
+            return EmbedBlockViewModel(
+                info: info,
+                url: data.url
+            )
         case .unsupported:
             guard let parentId = info.configurationData.parentId,
                   let parent = document.infoContainer.get(id: parentId),
