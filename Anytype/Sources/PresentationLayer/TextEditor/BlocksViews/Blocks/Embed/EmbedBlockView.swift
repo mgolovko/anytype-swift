@@ -1,7 +1,7 @@
 import UIKit
 import AnytypeCore
 import WebKit
-import HCVimeoVideoExtractor
+//import HCVimeoVideoExtractor
 import AVKit
 
 final class EmbedBlockView: UIView, BlockContentView {
@@ -13,9 +13,9 @@ final class EmbedBlockView: UIView, BlockContentView {
         return title
     }()
     
-    private let youtubeVideoView = YoutubeVideoView()
+    private let webView = WKWebViewVideoView()
 //    private let playerUIView = LoopingPlayerUIView(url: URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!)
-    private let playerUIView = LoopingPlayerUIView(url: URL(string: "https://skyfire.vimeocdn.com/1703105000-0xe27bbcfb1c57b016ea1d852f5e94d960020ca734/1d3cfe8b-2570-4c2a-bf61-41d754a0ed04/sep/video/0018aa38,0349cc79,45cb40e3,6d5a9faf,72ff789b,d462e47a,ed9506c1/audio/e50fa7df/subtitles/124138683-English%20%28United%20Kingdom%29-en-GB/master.m3u8?external-subs=1&query_string_ranges=1&subcache=1&subtoken=5c3431098aa1971e985b4437c0b9209bd7f99db0728e19b7f34cd9c1f737b82b")!)
+//    private let playerUIView = LoopingPlayerUIView(url: URL(string: "https://skyfire.vimeocdn.com/1703105000-0xe27bbcfb1c57b016ea1d852f5e94d960020ca734/1d3cfe8b-2570-4c2a-bf61-41d754a0ed04/sep/video/0018aa38,0349cc79,45cb40e3,6d5a9faf,72ff789b,d462e47a,ed9506c1/audio/e50fa7df/subtitles/124138683-English%20%28United%20Kingdom%29-en-GB/master.m3u8?external-subs=1&query_string_ranges=1&subcache=1&subtoken=5c3431098aa1971e985b4437c0b9209bd7f99db0728e19b7f34cd9c1f737b82b")!)
 //    private let playerUIView = PlayerUIView()
     
     private let videoPlayerView = VideoPlayerView()
@@ -32,6 +32,9 @@ final class EmbedBlockView: UIView, BlockContentView {
     }
 
     func update(with configuration: EmbedBlockConfiguration) {
+        let html = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/Z1GlRPRvYdY?si=9m5W781_GLpSb6ub\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>"
+//        "https://www.youtube.com/embed/Z1GlRPRvYdY?si=9m5W781_GLpSb6ub"
+        webView.play(with: html, url: "")
 //        titleLabel.setText(configuration.content.url)
 //        youtubeVideoView.play(with: configuration.content.url)
 //        "https://www.youtube.com/watch?v=ZafJLuDGzY8"
@@ -42,21 +45,21 @@ final class EmbedBlockView: UIView, BlockContentView {
 //        playerUIView.setup(with: "https://www.youtube.com/embed/ZafJLuDGzY8")
         
 //        playerUIView.setup(with: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-        let url = URL(string: "https://vimeo.com/894052647")!
-        HCVimeoVideoExtractor.fetchVideoURLFrom(url: url, completion: { [weak self] ( video:HCVimeoVideo?, error:Error?) -> Void in
-            if let err = error {
-                print("Error = \(err.localizedDescription)")
-                return
-            }
-            
-            guard let vid = video else {
-                print("Invalid video object")
-                return
-            }
-            
-            print("Title = \(vid.title), url = \(vid.videoURL), thumbnail = \(vid.thumbnailURL)")
-                
-            if let videoURL = vid.videoURL[.quality1080p] {
+//        let url = URL(string: "https://vimeo.com/894052647")!
+//        HCVimeoVideoExtractor.fetchVideoURLFrom(url: url, completion: { [weak self] ( video:HCVimeoVideo?, error:Error?) -> Void in
+//            if let err = error {
+//                print("Error = \(err.localizedDescription)")
+//                return
+//            }
+//            
+//            guard let vid = video else {
+//                print("Invalid video object")
+//                return
+//            }
+//            
+//            print("Title = \(vid.title), url = \(vid.videoURL), thumbnail = \(vid.thumbnailURL)")
+//                
+//            if let videoURL = vid.videoURL[.quality1080p] {
 //                let player = AVPlayer(url: videoURL)
 //                let playerController = AVPlayerViewController()
 //                playerController.player = player
@@ -71,23 +74,24 @@ final class EmbedBlockView: UIView, BlockContentView {
 //                self?.videoPlayerView.player = player
 //                player.play()
                 
-                let player = AVPlayer(url: videoURL)
-                self?.playerViewController.player = player
+//                let player = AVPlayer(url: videoURL)
+//                self?.playerViewController.player = player
 //                DispatchQueue.main.async {
 //                    player.play()
 //                }
-            }
-        })
+//            }
+//        })
+        
     }
 
     private func setup() {
 //        addSubview(titleLabel) {
 //            $0.pinToSuperview(insets: Layout.contentViewInsets)
 //        }
-//        addSubview(youtubeVideoView) {
-//            $0.pinToSuperview(insets: Layout.contentViewInsets)
-//            $0.height.equal(to: 300)
-//        }
+        addSubview(webView) {
+            $0.pinToSuperview(insets: Layout.contentViewInsets)
+            $0.height.equal(to: 300)
+        }
         
 //        addSubview(playerUIView) {
 //            $0.pinToSuperview()
@@ -101,11 +105,11 @@ final class EmbedBlockView: UIView, BlockContentView {
 //            $0.width.equal(to: 300)
 //        }
         
-        addSubview(playerViewController.view) {
-            $0.pinToSuperview()
-            $0.height.equal(to: 300)
-            $0.width.equal(to: 300)
-        }
+//        addSubview(playerViewController.view) {
+//            $0.pinToSuperview()
+//            $0.height.equal(to: 300)
+//            $0.width.equal(to: 300)
+//        }
     }
 }
 
@@ -115,7 +119,7 @@ private extension EmbedBlockView {
     }
 }
 
-class YoutubeVideoView: UIView {
+class WKWebViewVideoView: UIView {
     
     private lazy var webConfig: WKWebViewConfiguration = {
         $0.allowsInlineMediaPlayback = true
@@ -130,6 +134,7 @@ class YoutubeVideoView: UIView {
     init() {
         super.init(frame: .zero)
         configureViews()
+        backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
@@ -142,9 +147,10 @@ class YoutubeVideoView: UIView {
         }
     }
     
-    func play(with url: String) {
-        guard let url = URL(string: url) else { return }
-        webView.load(.init(url: url))
+    func play(with string: String, url: String) {
+        webView.loadHTMLString(string, baseURL: URL(string: url))
+//        guard let url = URL(string: url) else { return }
+//        webView.load(.init(url: url))
     }
 }
 
