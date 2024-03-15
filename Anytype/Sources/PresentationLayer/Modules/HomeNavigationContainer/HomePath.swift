@@ -19,14 +19,15 @@ struct HomePath {
     }
     
     mutating func pop() {
-        guard path.count > 1 else { return }
+//        guard path.count > 1 else { return }
+        guard path.count > 0 else { return }
         _ = path.popLast()
     }
     
-    mutating func popToRoot() {
-        guard let first = path.first else { return }
-        path = [first]
-    }
+//    mutating func removeAll() {
+//        guard let first = path.first else { return }
+//        path = [first]
+//    }
     
     mutating func replaceLast(_ item: AnyHashable) {
         guard path.count > 0 else {

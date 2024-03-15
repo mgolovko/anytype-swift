@@ -105,7 +105,8 @@ struct HomeBottomNavigationPanelView: View {
     }
     
     private var homeMode: Bool {
-        return homePath.count <= 1
+//        return homePath.count <= 1
+        return homePath.count <= 0
     }
     
     @ViewBuilder

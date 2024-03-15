@@ -505,6 +505,9 @@
 		2A6ED170285B452600AAA21C /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 2A6ED16F285B452600AAA21C /* SwiftProtobuf */; };
 		2A6F5046288A8F0B00ED6E2E /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F5045288A8F0B00ED6E2E /* ImageAssets.swift */; };
 		2A6F5048288A9AB600ED6E2E /* Image+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F5047288A9AB600ED6E2E /* Image+Create.swift */; };
+		2A7074A82BA42F2F0045EC4E /* HomeBottomPanelContainerExperemental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7074A72BA42F2F0045EC4E /* HomeBottomPanelContainerExperemental.swift */; };
+		2A7074AA2BA42FFA0045EC4E /* HomeCoordinatorExperementalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7074A92BA42FFA0045EC4E /* HomeCoordinatorExperementalView.swift */; };
+		2A7074AC2BA430290045EC4E /* HomeCoordinatorExperementalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7074AB2BA430280045EC4E /* HomeCoordinatorExperementalViewModel.swift */; };
 		2A7208B72AF3B67D006D88CF /* SegmentLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7208B62AF3B67D006D88CF /* SegmentLine.swift */; };
 		2A730A732940BE7A00E51335 /* NewSearchCreateButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A730A722940BE7A00E51335 /* NewSearchCreateButtonModel.swift */; };
 		2A730A762940C10000E51335 /* SearchObjectRowView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A730A752940C10000E51335 /* SearchObjectRowView+Init.swift */; };
@@ -534,6 +537,7 @@
 		2A7DCDE2292E60BA001919B4 /* AddNewRelationCoordinatorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7DCDE1292E60BA001919B4 /* AddNewRelationCoordinatorAssembly.swift */; };
 		2A7DCDE4292E7D5A001919B4 /* SearchModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7DCDE3292E7D5A001919B4 /* SearchModuleAssembly.swift */; };
 		2A7DCDE8292E8260001919B4 /* SearchModuleAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7DCDE7292E8260001919B4 /* SearchModuleAssemblyProtocol.swift */; };
+		2A802A1E2BA445AB00A17599 /* HomeBottomSheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A802A1D2BA445AB00A17599 /* HomeBottomSheetContainer.swift */; };
 		2A80D0422AB9EB2000DB0513 /* HomeBottomPanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A80D0412AB9EB2000DB0513 /* HomeBottomPanelContainer.swift */; };
 		2A80D04A2ABADD4600DB0513 /* EditorCoordinatorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A80D0492ABADD4600DB0513 /* EditorCoordinatorAssembly.swift */; };
 		2A80D04C2ABADD5800DB0513 /* EditorSetCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A80D04B2ABADD5800DB0513 /* EditorSetCoordinatorView.swift */; };
@@ -2279,6 +2283,9 @@
 		2A6ED164285B449700AAA21C /* AnytypeCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AnytypeCore; path = Modules/AnytypeCore; sourceTree = "<group>"; };
 		2A6F5045288A8F0B00ED6E2E /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
 		2A6F5047288A9AB600ED6E2E /* Image+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Create.swift"; sourceTree = "<group>"; };
+		2A7074A72BA42F2F0045EC4E /* HomeBottomPanelContainerExperemental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPanelContainerExperemental.swift; sourceTree = "<group>"; };
+		2A7074A92BA42FFA0045EC4E /* HomeCoordinatorExperementalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorExperementalView.swift; sourceTree = "<group>"; };
+		2A7074AB2BA430280045EC4E /* HomeCoordinatorExperementalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorExperementalViewModel.swift; sourceTree = "<group>"; };
 		2A7208B62AF3B67D006D88CF /* SegmentLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentLine.swift; sourceTree = "<group>"; };
 		2A730A722940BE7A00E51335 /* NewSearchCreateButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchCreateButtonModel.swift; sourceTree = "<group>"; };
 		2A730A752940C10000E51335 /* SearchObjectRowView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchObjectRowView+Init.swift"; sourceTree = "<group>"; };
@@ -2308,6 +2315,7 @@
 		2A7DCDE1292E60BA001919B4 /* AddNewRelationCoordinatorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRelationCoordinatorAssembly.swift; sourceTree = "<group>"; };
 		2A7DCDE3292E7D5A001919B4 /* SearchModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleAssembly.swift; sourceTree = "<group>"; };
 		2A7DCDE7292E8260001919B4 /* SearchModuleAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleAssemblyProtocol.swift; sourceTree = "<group>"; };
+		2A802A1D2BA445AB00A17599 /* HomeBottomSheetContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheetContainer.swift; sourceTree = "<group>"; };
 		2A80D0412AB9EB2000DB0513 /* HomeBottomPanelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPanelContainer.swift; sourceTree = "<group>"; };
 		2A80D0492ABADD4600DB0513 /* EditorCoordinatorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCoordinatorAssembly.swift; sourceTree = "<group>"; };
 		2A80D04B2ABADD5800DB0513 /* EditorSetCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSetCoordinatorView.swift; sourceTree = "<group>"; };
@@ -6149,6 +6157,8 @@
 				2AFEED172A73AEDB00D7A45B /* HomeCoordinatorViewModel.swift */,
 				2AD1FCC02AB8466C00CEBE1E /* SetBottomPanelHidenEnvironment.swift */,
 				2A29873B2ACC087B009E8787 /* PageNavigation.swift */,
+				2A7074A92BA42FFA0045EC4E /* HomeCoordinatorExperementalView.swift */,
+				2A7074AB2BA430280045EC4E /* HomeCoordinatorExperementalViewModel.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -6850,6 +6860,8 @@
 				2ADF00922ACF0040000D01F8 /* HomePath.swift */,
 				2AF205B62ABD8E660027F3EA /* Panel */,
 				2A80D0412AB9EB2000DB0513 /* HomeBottomPanelContainer.swift */,
+				2A7074A72BA42F2F0045EC4E /* HomeBottomPanelContainerExperemental.swift */,
+				2A802A1D2BA445AB00A17599 /* HomeBottomSheetContainer.swift */,
 			);
 			path = HomeNavigationContainer;
 			sourceTree = "<group>";
@@ -10853,6 +10865,7 @@
 				3DDC6A64262707CB004F5EA4 /* BlockLinkCardView.swift in Sources */,
 				2AEABE0528C7548A00BDE3AC /* RelationEventsBunch.swift in Sources */,
 				3D24910B27BBD87200821595 /* CGFloat+OnePixel.swift in Sources */,
+				2A7074A82BA42F2F0045EC4E /* HomeBottomPanelContainerExperemental.swift in Sources */,
 				EA3D1E5426CFCCC5001A31D9 /* TextViewAttributeSelectionHandler.swift in Sources */,
 				2AAF34372954C86800921320 /* TreeWidgetView.swift in Sources */,
 				1200BF9227F4CA62000A0366 /* DownloadableImageViewWrapperProtocol.swift in Sources */,
@@ -11365,6 +11378,7 @@
 				2AAF343E29559DA600921320 /* HomeWidgetsRegistry.swift in Sources */,
 				3DB3EC5D2754CB0D002781DA /* ProgressBar.swift in Sources */,
 				2A7BD6E828D8599D008B735C /* RelationSubscriptionDataBuilderProtocol.swift in Sources */,
+				2A7074AA2BA42FFA0045EC4E /* HomeCoordinatorExperementalView.swift in Sources */,
 				1244794727DC96FB00581174 /* TagsSearchViewModel.swift in Sources */,
 				C90F8F2C28DCBDBA00E874A9 /* FilePreviewContext.swift in Sources */,
 				2A80D04E2ABADD6000DB0513 /* EditorSetCoordinatorViewModel.swift in Sources */,
@@ -11903,6 +11917,7 @@
 				2E8387BF291A521900506766 /* EditorSetViewModel+DragAndDropDelegate.swift in Sources */,
 				1244791C27D8A63D00581174 /* StatusSearchInteractor.swift in Sources */,
 				2A816AC92AD7DFC700975BCA /* ServerConfigurationView.swift in Sources */,
+				2A7074AC2BA430290045EC4E /* HomeCoordinatorExperementalViewModel.swift in Sources */,
 				12A7B6C126C3E47200544037 /* DocumentCover.swift in Sources */,
 				2AD8E94F2B679D2800AADB9E /* NotificationCoordinator.swift in Sources */,
 				2E7E50472B6D65F6003867A3 /* ObjectRelationListCoordinatorViewModel.swift in Sources */,
@@ -12052,6 +12067,7 @@
 				C90F8F2228DC706D00E874A9 /* FilePreviewMedia.swift in Sources */,
 				3DC7862D265D251900498993 /* MiddlewareEventsListener.swift in Sources */,
 				2E9EFE62285B45C500C8E47A /* ExceptionalSetSort.swift in Sources */,
+				2A802A1E2BA445AB00A17599 /* HomeBottomSheetContainer.swift in Sources */,
 				12C6343026600C2600E1DF6F /* TapGestureRecognizerWithClosure.swift in Sources */,
 				2A78A95A2B9F36D300396B82 /* ActiveWorkpaceStorageMock.swift in Sources */,
 				EA57F3D126B83DDF007D4292 /* AttributeState.swift in Sources */,

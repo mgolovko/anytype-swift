@@ -6,7 +6,7 @@ import AnytypeCore
 import DeepLinks
 
 @MainActor
-final class HomeCoordinatorViewModel: ObservableObject,
+final class HomeCoordinatorExperementalViewModel: ObservableObject,
                                              HomeWidgetsModuleOutput, CommonWidgetModuleOutput,
                                              HomeBottomPanelModuleOutput, HomeBottomNavigationPanelModuleOutput,
                                              SetObjectCreationCoordinatorOutput {
@@ -63,6 +63,8 @@ final class HomeCoordinatorViewModel: ObservableObject,
     @Published var pathChanging: Bool = false
     @Published var keyboardToggle: Bool = false
     @Published var spaceJoinData: SpaceJoinModuleData?
+    @Published var accountInfo: AccountInfo?
+    @Published var sheetDismiss: Bool = true
     
     private var currentSpaceId: String?
     
@@ -299,6 +301,7 @@ final class HomeCoordinatorViewModel: ObservableObject,
 
     func onHomeSelected() {
         guard !pathChanging else { return }
+        sheetDismiss.toggle()
 //        editorPath.removeAll()
     }
 
@@ -434,9 +437,10 @@ final class HomeCoordinatorViewModel: ObservableObject,
                 try await activeWorkspaceStorage.setActiveSpace(spaceId: spaceId)
                 
                 var path = paths[spaceId] ?? HomePath()
-                if path.count == 0 {
-                    path.push(activeWorkspaceStorage.workspaceInfo)
-                }
+                self.accountInfo = activeWorkspaceStorage.workspaceInfo
+//                if path.count == 0 {
+//                    path.push(activeWorkspaceStorage.workspaceInfo)
+//                }
                 
                 path.push(data)
                 editorPath = path
@@ -455,9 +459,7 @@ final class HomeCoordinatorViewModel: ObservableObject,
             }
             // Restore New
             var path = paths[newInfo.accountSpaceId] ?? HomePath()
-            if path.count == 0 {
-                path.push(newInfo)
-            }
+            self.accountInfo = newInfo
             
             do {
                 // Restore last open page
