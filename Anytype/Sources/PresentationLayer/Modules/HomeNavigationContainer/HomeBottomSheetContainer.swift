@@ -51,7 +51,7 @@ struct HomeBottomSheetContainer<Content: View>: View {
                     .cornerRadius(16, style: .continuous)
                     .shadow(radius: 5)
                     .offset(y: offsetY(size: readerFrame.size, safeArea: readerSafeArea.safeAreaInsets))
-                    .highPriorityGesture(
+                    .gesture(
                         DragGesture()
                             .updating($dragGestureActive) { value, state, transaction in
                                 state = true
@@ -65,9 +65,9 @@ struct HomeBottomSheetContainer<Content: View>: View {
                                     // TODO: Sync with offset - move to methods
                                     let hide = readerFrame.size.height - 90
                                     let show = readerSafeArea.safeAreaInsets.top + 10
-                                    
+                                    let multiple = abs(value.velocity.height) > 1000 ? 0.0 : 0.3
                                     let distance = hide - show
-                                    let distanceForChange = distance * 0.3
+                                    let distanceForChange = distance * multiple
                                     if sheetDragOffsetY > 0 && abs(sheetDragOffsetY) > distanceForChange {
                                         // Down
                                         sheetDismiss = true
