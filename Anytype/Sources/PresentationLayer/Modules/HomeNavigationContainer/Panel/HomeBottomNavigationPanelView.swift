@@ -5,6 +5,7 @@ import AnytypeCore
 struct HomeBottomNavigationPanelView: View {
     
     let homePath: HomePath
+    let sheetDismiss: Bool
     @StateObject var model: HomeBottomNavigationPanelViewModel
     
     var body: some View {
@@ -86,27 +87,36 @@ struct HomeBottomNavigationPanelView: View {
     
     @ViewBuilder
     private var navigationButton: some View {
-        Button {
-            if homeMode {
+        if navigationIsEmpty {
+            Button {
                 model.onTapForward()
-            } else {
-                model.onTapBackward()
+            } label: {
+                Image(asset: .X32.Arrow.left)
+                    .foregroundColor(!homePath.hasForwardPath() ? .Navigation.buttonInactive : .Navigation.buttonActive)
             }
-        } label: {
-            Image(asset: .X32.Arrow.left)
-                .foregroundColor(navigationButtonDisabled ? .Navigation.buttonInactive : .Navigation.buttonActive)
+            .disabled(!homePath.hasForwardPath())
+        } else {
+            Button {
+                if !navigationIsEmpty && sheetDismiss {
+                    model.onTapShowSheet()
+                } else if homePath.count > 1 {
+                    model.onTapBackward()
+                } else {
+                    model.onTapDismissSheet()
+                }
+            } label: {
+                Image(asset: .X32.Arrow.left)
+                    .foregroundColor(.Navigation.buttonActive)
+            }
         }
-        .transition(.identity)
-        .disabled(navigationButtonDisabled)
     }
     
-    private var navigationButtonDisabled: Bool {
-        homeMode && !homePath.hasForwardPath()
+    private var navigationIsEmpty: Bool {
+        return homePath.count == 0
     }
     
     private var homeMode: Bool {
-//        return homePath.count <= 1
-        return homePath.count <= 0
+        return sheetDismiss
     }
     
     @ViewBuilder

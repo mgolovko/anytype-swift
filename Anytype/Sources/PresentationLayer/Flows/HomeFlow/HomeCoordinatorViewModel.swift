@@ -162,12 +162,15 @@ final class HomeCoordinatorViewModel: ObservableObject,
         sharingTipCoordinator.startObservingTips()
     }
     
+    func onSheetDismiss() {}
+    func onSheetPresent() {}
+    
     func homeWidgetsModule(info: AccountInfo) -> AnyView? {
         return homeWidgetsModuleAssembly.make(info: info, output: self, widgetOutput: self, bottomPanelOutput: self)
     }
     
     func homeBottomNavigationPanelModule() -> AnyView {
-        return homeBottomNavigationPanelModuleAssembly.make(homePath: editorPath, output: self)
+        return homeBottomNavigationPanelModuleAssembly.make(homePath: editorPath, sheetDismiss: false, output: self)
     }
 
     func changeSourceModule(data: WidgetChangeSourceSearchModuleModel) -> AnyView {

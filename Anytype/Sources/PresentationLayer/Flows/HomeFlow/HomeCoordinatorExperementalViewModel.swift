@@ -169,7 +169,7 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
     }
     
     func homeBottomNavigationPanelModule() -> AnyView {
-        return homeBottomNavigationPanelModuleAssembly.make(homePath: editorPath, output: self)
+        return homeBottomNavigationPanelModuleAssembly.make(homePath: editorPath, sheetDismiss: sheetDismiss, output: self)
     }
 
     func changeSourceModule(data: WidgetChangeSourceSearchModuleModel) -> AnyView {
@@ -308,16 +308,26 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
     func onForwardSelected() {
         guard !pathChanging else { return }
         editorPath.pushFromHistory()
+        sheetDismiss = false
     }
 
     func onBackwardSelected() {
         guard !pathChanging else { return }
         editorPath.pop()
+        sheetDismiss = false
     }
     
     func onPickTypeForNewObjectSelected() {
         UISelectionFeedbackGenerator().selectionChanged()
         showTypeSearchForObjectCreation.toggle()
+    }
+    
+    func onSheetDismiss() {
+        sheetDismiss = true
+    }
+    
+    func onSheetPresent() {
+        sheetDismiss = false
     }
 
     // MARK: - SetObjectCreationCoordinatorOutput
@@ -412,7 +422,11 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
     private func push(data: EditorScreenData) {
         Task {
             guard let objectId = data.objectId else {
+                if sheetDismiss {
+                    editorPath = HomePath()
+                }
                 editorPath.push(data)
+                sheetDismiss = false
                 return
             }
             let document = documentsProvider.document(objectId: objectId, forPreview: true)
@@ -445,8 +459,12 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
                 path.push(data)
                 editorPath = path
             } else {
+                if sheetDismiss {
+                    editorPath = HomePath()
+                }
                 editorPath.push(data)
             }
+            sheetDismiss = false
         }
     }
     

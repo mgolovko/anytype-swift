@@ -43,11 +43,16 @@ struct HomeBottomPanelContainerExperemental<Content: View, BottomContent: View, 
         }
         .safeAreaInset(edge: .bottom) {
             if !bottomPanelHidden {
-                bottomPanel
-                    .readSize {
-                        bottomSize = $0
+                VStack(spacing: 0) {
+                    bottomPanel
+                        .readSize {
+                            bottomSize = $0
+                        }
+                        .transition(.opacity)
+                    if path.count > 0 && sheetDismiss {
+                        Spacer.fixedHeight(50)
                     }
-                    .transition(.opacity)
+                }
             }
         }
         .setHomeBottomPanelHiddenHandler($bottomPanelHidden)

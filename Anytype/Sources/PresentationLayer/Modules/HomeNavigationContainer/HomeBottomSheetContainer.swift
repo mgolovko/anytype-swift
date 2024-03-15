@@ -42,15 +42,15 @@ struct HomeBottomSheetContainer<Content: View>: View {
             GeometryReader { readerFrame in
                 if path.count > 0 {
                     ZStack {
-//                        Color.red
+                        Color.black
                         content
-//                            .allowsHitTesting(!sheetDismiss)
+                            .allowsHitTesting(!sheetDismiss)
                     }
 //                    .disabled(false)
                     .frame(height: readerFrame.size.height - readerSafeArea.safeAreaInsets.top - 10)
                     .cornerRadius(16, style: .continuous)
                     .shadow(radius: 5)
-                    .offset(y: (sheetDismiss ? readerFrame.size.height - 50 : readerSafeArea.safeAreaInsets.top + 10) + (dragInProgress ? sheetDragOffsetY : 0))
+                    .offset(y: offsetY(size: readerFrame.size, safeArea: readerSafeArea.safeAreaInsets))
                     .highPriorityGesture(
                         DragGesture()
                             .updating($dragGestureActive) { value, state, transaction in
@@ -58,12 +58,12 @@ struct HomeBottomSheetContainer<Content: View>: View {
                             }
                             .onChanged { value in
                                 sheetDragOffsetY = value.translation.height
-                                dragInProgress = true
+//                                dragInProgress = true
                             }
                             .onEnded { value in
                                 withAnimation {
                                     // TODO: Sync with offset - move to methods
-                                    let hide = readerFrame.size.height - 50
+                                    let hide = readerFrame.size.height - 90
                                     let show = readerSafeArea.safeAreaInsets.top + 10
                                     
                                     let distance = hide - show
@@ -77,7 +77,7 @@ struct HomeBottomSheetContainer<Content: View>: View {
                                     }
                                     
                                     sheetDragOffsetY = 0
-                                    dragInProgress = false
+//                                    dragInProgress = false
                                 }
                             }
                     )
@@ -85,7 +85,12 @@ struct HomeBottomSheetContainer<Content: View>: View {
                         // Some times drag gesture call on change and don't call on end. Detect cancel gesture
                         if newState == false {
                             sheetDragOffsetY = 0
-                            dragInProgress = false
+//                            dragInProgress = false
+                        }
+                    }
+                    .onTapGesture {
+                        if sheetDismiss {
+                            sheetDismiss = false
                         }
                     }
                     .transition(.move(edge: .bottom))
@@ -95,10 +100,15 @@ struct HomeBottomSheetContainer<Content: View>: View {
         }
         .animation(.default, value: path.count)
         .animation(.default, value: sheetDismiss)
-        .onChange(of: path.count) { newValue in
-            if sheetDismiss {
-                sheetDismiss = false
-            }
+    }
+    
+    private func offsetY(size: CGSize, safeArea: EdgeInsets) -> CGFloat {
+        if sheetDismiss {
+            return size.height - 90 + sheetDragOffsetY
+        } else {
+            let minOffset = safeArea.top + 10
+            return max(minOffset, minOffset + sheetDragOffsetY)
         }
+        
     }
 }
