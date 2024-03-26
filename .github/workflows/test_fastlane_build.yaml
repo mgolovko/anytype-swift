@@ -68,4 +68,4 @@ jobs:
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 900
           FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 4
 
-      - uses: hmarr/auto-approve-action@v4
+      # - uses: hmarr/auto-approve-action@v4
