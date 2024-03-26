@@ -71,5 +71,5 @@ jobs:
       - uses: peter-evans/create-pull-request@v6
         with:
           title: 'Update version'
-          branch: develop
+          base: develop
       # - uses: hmarr/auto-approve-action@v4
