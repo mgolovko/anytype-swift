@@ -49,6 +49,14 @@ final class HomeBottomNavigationPanelViewModel: ObservableObject {
         output?.onBackwardSelected()
     }
     
+    func onTapShowSheet() {
+        output?.onSheetPresent()
+    }
+
+    func onTapDismissSheet() {
+        output?.onSheetDismiss()
+    }
+    
     func onTapNewObject() {
         handleCreateObject()
     }

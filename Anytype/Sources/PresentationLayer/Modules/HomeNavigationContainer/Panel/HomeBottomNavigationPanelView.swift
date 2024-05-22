@@ -7,10 +7,11 @@ struct HomeBottomNavigationPanelView: View {
     
     let homePath: HomePath
     let info: AccountInfo
+    let sheetDismiss: Bool
     weak var output: HomeBottomNavigationPanelModuleOutput?
     
     var body: some View {
-        HomeBottomNavigationPanelViewInternal(homePath: homePath, info: info, output: output)
+        HomeBottomNavigationPanelViewInternal(homePath: homePath, info: info, sheetDismiss: sheetDismiss,  output: output)
             .id(info.accountSpaceId)
     }
 }
@@ -18,10 +19,12 @@ struct HomeBottomNavigationPanelView: View {
 private struct HomeBottomNavigationPanelViewInternal: View {
     
     let homePath: HomePath
+    let sheetDismiss: Bool
     @StateObject private var model: HomeBottomNavigationPanelViewModel
     
-    init(homePath: HomePath, info: AccountInfo, output: HomeBottomNavigationPanelModuleOutput?) {
+    init(homePath: HomePath, info: AccountInfo, sheetDismiss: Bool, output: HomeBottomNavigationPanelModuleOutput?) {
         self.homePath = homePath
+        self.sheetDismiss = sheetDismiss
         self._model = StateObject(wrappedValue: HomeBottomNavigationPanelViewModel(info: info, output: output))
     }
     
@@ -107,28 +110,58 @@ private struct HomeBottomNavigationPanelViewInternal: View {
         }
     }
     
+//    @ViewBuilder
+//    private var navigationButton: some View {
+//        Button {
+//            if homeMode {
+//                model.onTapForward()
+//            } else {
+//                model.onTapBackward()
+//            }
+//        } label: {
+//            Image(asset: .X32.Arrow.left)
+//                .foregroundColor(navigationButtonDisabled ? .Navigation.buttonInactive : .Navigation.buttonActive)
+//        }
+//        .transition(.identity)
+//        .disabled(navigationButtonDisabled)
+//    }
+    
     @ViewBuilder
     private var navigationButton: some View {
-        Button {
-            if homeMode {
+        if navigationIsEmpty {
+            Button {
                 model.onTapForward()
-            } else {
-                model.onTapBackward()
+            } label: {
+                Image(asset: .X32.Arrow.left)
+                    .foregroundColor(!homePath.hasForwardPath() ? .Navigation.buttonInactive : .Navigation.buttonActive)
             }
-        } label: {
-            Image(asset: .X32.Arrow.left)
-                .foregroundColor(navigationButtonDisabled ? .Navigation.buttonInactive : .Navigation.buttonActive)
+            .disabled(!homePath.hasForwardPath())
+        } else {
+            Button {
+                if !navigationIsEmpty && sheetDismiss {
+                    model.onTapShowSheet()
+                } else if homePath.count > 1 {
+                    model.onTapBackward()
+                } else {
+                    model.onTapDismissSheet()
+                }
+            } label: {
+                Image(asset: .X32.Arrow.left)
+                    .foregroundColor(.Navigation.buttonActive)
+            }
         }
-        .transition(.identity)
-        .disabled(navigationButtonDisabled)
     }
     
-    private var navigationButtonDisabled: Bool {
-        homeMode && !homePath.hasForwardPath()
+//    private var navigationButtonDisabled: Bool {
+//        homeMode && !homePath.hasForwardPath()
+//    }
+    
+    private var navigationIsEmpty: Bool {
+        return homePath.count == 0
     }
     
     private var homeMode: Bool {
-        return homePath.count <= 1
+        return sheetDismiss//homePath.count <= 1
     }
     
     @ViewBuilder

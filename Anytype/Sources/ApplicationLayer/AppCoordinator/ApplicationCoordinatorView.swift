@@ -39,7 +39,8 @@ struct ApplicationCoordinatorView: View {
                 DebugMenuView()
             }
         case .home:
-            HomeCoordinatorView()
+//            HomeCoordinatorView()
+            HomeCoordinatorExperementalView()
         case .delete:
             model.deleteAccount()
         }

@@ -6,7 +6,7 @@ import AnytypeCore
 import DeepLinks
 
 @MainActor
-final class HomeCoordinatorViewModel: ObservableObject,
+final class HomeCoordinatorExperementalViewModel: ObservableObject,
                                              HomeWidgetsModuleOutput, CommonWidgetModuleOutput,
                                              HomeBottomNavigationPanelModuleOutput,
                                              SetObjectCreationCoordinatorOutput {
@@ -34,6 +34,8 @@ final class HomeCoordinatorViewModel: ObservableObject,
     
     @Injected(\.legacySetObjectCreationCoordinator)
     private var setObjectCreationCoordinator: SetObjectCreationCoordinatorProtocol
+    @Injected(\.legacySharingTip)
+    private var sharingTipCoordinator: SharingTipCoordinatorProtocol
     
     // MARK: - State
     
@@ -53,7 +55,6 @@ final class HomeCoordinatorViewModel: ObservableObject,
     @Published var showSpaceManager: Bool = false
     @Published var showGalleryImport: GalleryInstallationData?
     @Published var showMembershipNameSheet: MembershipTier?
-    @Published var showSpaceShareTip: Bool = false
     
     @Published var editorPath = HomePath() {
         didSet { UserDefaultsConfig.lastOpenedPage = editorPath.lastPathElement as? EditorScreenData }
@@ -64,6 +65,7 @@ final class HomeCoordinatorViewModel: ObservableObject,
     @Published var keyboardToggle: Bool = false
     @Published var spaceJoinData: SpaceJoinModuleData?
     @Published var info: AccountInfo?
+    @Published var sheetDismiss: Bool = true
     
     private var currentSpaceId: String?
     
@@ -93,8 +95,13 @@ final class HomeCoordinatorViewModel: ObservableObject,
             }
     }
 
-    func onSheetDismiss() {}
-    func onSheetPresent() {}
+    func onSheetDismiss() {
+        sheetDismiss = true
+    }
+    
+    func onSheetPresent() {
+        sheetDismiss = false
+    }
     
     func onAppear() {
         guard !viewLoaded else { return }
@@ -107,6 +114,8 @@ final class HomeCoordinatorViewModel: ObservableObject,
                 self?.switchSpace(info: newInfo)
             }
             .store(in: &subscriptions)
+        
+        sharingTipCoordinator.startObservingTips()
     }
     
     func startDeepLinkTask() async {
@@ -122,7 +131,7 @@ final class HomeCoordinatorViewModel: ObservableObject,
         self.dismissAllPresented = dismissAllPresented
     }
     
-    func typeSearchForObjectCreationModule() -> TypeSearchForNewObjectCoordinatorView {        
+    func typeSearchForObjectCreationModule() -> TypeSearchForNewObjectCoordinatorView {
         TypeSearchForNewObjectCoordinatorView { [weak self] details in
             guard let self else { return }
             openObject(screenData: details.editorScreenData())
@@ -190,7 +199,7 @@ final class HomeCoordinatorViewModel: ObservableObject,
     
     // MARK: - HomeBottomNavigationPanelModuleOutput
     
-    func onSearchSelected() {        
+    func onSearchSelected() {
         if FeatureFlags.newGlobalSearch {
             showGlobalSearchData = GlobalSearchModuleData(
                 spaceId: activeWorkspaceStorage.workspaceInfo.accountSpaceId,
@@ -220,17 +229,20 @@ final class HomeCoordinatorViewModel: ObservableObject,
 
     func onHomeSelected() {
         guard !pathChanging else { return }
-        editorPath.popToRoot()
+        sheetDismiss = true
+//        editorPath.popToRoot()
     }
 
     func onForwardSelected() {
         guard !pathChanging else { return }
         editorPath.pushFromHistory()
+        sheetDismiss = false
     }
 
     func onBackwardSelected() {
         guard !pathChanging else { return }
         editorPath.pop()
+        sheetDismiss = false
     }
     
     func onPickTypeForNewObjectSelected() {
@@ -321,8 +333,6 @@ final class HomeCoordinatorViewModel: ObservableObject,
             try await document.openForPreview()
             guard let editorData = document.details?.editorScreenData() else { return }
             try await push(data: editorData)
-        case .spaceShareTip:
-            showSpaceShareTip = true
         }
     }
     
@@ -332,7 +342,11 @@ final class HomeCoordinatorViewModel: ObservableObject,
         
     private func push(data: EditorScreenData) async throws {
         guard let objectId = data.objectId else {
+            if sheetDismiss {
+                editorPath = HomePath()
+            }
             editorPath.push(data)
+            sheetDismiss = false
             return
         }
         let document = documentsProvider.document(objectId: objectId, forPreview: true)
@@ -357,15 +371,19 @@ final class HomeCoordinatorViewModel: ObservableObject,
             try await activeWorkspaceStorage.setActiveSpace(spaceId: spaceId)
             
             var path = paths[spaceId] ?? HomePath()
-            if path.count == 0 {
-                path.push(activeWorkspaceStorage.workspaceInfo)
-            }
+//            if path.count == 0 {
+//                path.push(activeWorkspaceStorage.workspaceInfo)
+//            }
             
             path.push(data)
             editorPath = path
         } else {
+            if sheetDismiss {
+                editorPath = HomePath()
+            }
             editorPath.push(data)
         }
+        sheetDismiss = false
     }
     
     private func switchSpace(info newInfo: AccountInfo) {
@@ -377,9 +395,9 @@ final class HomeCoordinatorViewModel: ObservableObject,
             }
             // Restore New
             var path = paths[newInfo.accountSpaceId] ?? HomePath()
-            if path.count == 0 {
-                path.push(newInfo)
-            }
+//            if path.count == 0 {
+//                path.push(newInfo)
+//            }
             
             do {
                 // Restore last open page

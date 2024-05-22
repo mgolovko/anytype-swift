@@ -6,6 +6,8 @@ protocol HomeBottomNavigationPanelModuleOutput: AnyObject {
     func onCreateObjectSelected(screenData: EditorScreenData)
     func onProfileSelected()
     func onHomeSelected()
+    func onSheetDismiss()
+    func onSheetPresent()
     func onForwardSelected()
     func onBackwardSelected()
     func onPickTypeForNewObjectSelected()

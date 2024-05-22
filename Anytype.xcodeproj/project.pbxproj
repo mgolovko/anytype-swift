@@ -604,6 +604,10 @@
 		2A90C470285B5AA700B6B44E /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 2A90C46F285B5AA700B6B44E /* SwiftProtobuf */; };
 		2A90C47B28605F8C00B6B44E /* TableOfContentsContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A90C47A28605F8C00B6B44E /* TableOfContentsContentProvider.swift */; };
 		2A91DB7A2BFCD3DC00D5780A /* DragAndDropFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A91DB792BFCD3DC00D5780A /* DragAndDropFrames.swift */; };
+		2A91DB7C2BFDEA8F00D5780A /* HomeCoordinatorExperementalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A91DB7B2BFDEA8F00D5780A /* HomeCoordinatorExperementalView.swift */; };
+		2A91DB7E2BFDEAD600D5780A /* HomeBottomPanelContainerExperemental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A91DB7D2BFDEAD600D5780A /* HomeBottomPanelContainerExperemental.swift */; };
+		2A91DB802BFDEB0200D5780A /* HomeBottomSheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A91DB7F2BFDEB0200D5780A /* HomeBottomSheetContainer.swift */; };
+		2A91DB822BFDECC900D5780A /* HomeCoordinatorExperementalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A91DB812BFDECC900D5780A /* HomeCoordinatorExperementalViewModel.swift */; };
 		2A9349C32B8F70B100B892D3 /* SpaceLeaveAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9349C22B8F70B100B892D3 /* SpaceLeaveAlert.swift */; };
 		2A93E1A82AE7DE90004438FD /* View+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93E1A72AE7DE90004438FD /* View+Sheet.swift */; };
 		2A945D3C299E2CD300C34C86 /* WidgetEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A945D3B299E2CD300C34C86 /* WidgetEmptyView.swift */; };
@@ -2357,6 +2361,10 @@
 		2A8DCAD128C635CE0029B914 /* RelationDetailsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationDetailsStorage.swift; sourceTree = "<group>"; };
 		2A90C47A28605F8C00B6B44E /* TableOfContentsContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOfContentsContentProvider.swift; sourceTree = "<group>"; };
 		2A91DB792BFCD3DC00D5780A /* DragAndDropFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropFrames.swift; sourceTree = "<group>"; };
+		2A91DB7B2BFDEA8F00D5780A /* HomeCoordinatorExperementalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorExperementalView.swift; sourceTree = "<group>"; };
+		2A91DB7D2BFDEAD600D5780A /* HomeBottomPanelContainerExperemental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPanelContainerExperemental.swift; sourceTree = "<group>"; };
+		2A91DB7F2BFDEB0200D5780A /* HomeBottomSheetContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomSheetContainer.swift; sourceTree = "<group>"; };
+		2A91DB812BFDECC900D5780A /* HomeCoordinatorExperementalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorExperementalViewModel.swift; sourceTree = "<group>"; };
 		2A9349C22B8F70B100B892D3 /* SpaceLeaveAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceLeaveAlert.swift; sourceTree = "<group>"; };
 		2A93E1A72AE7DE90004438FD /* View+Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Sheet.swift"; sourceTree = "<group>"; };
 		2A945D3B299E2CD300C34C86 /* WidgetEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEmptyView.swift; sourceTree = "<group>"; };
@@ -6273,9 +6281,13 @@
 			children = (
 				2A7B124C2B19CC4700E14578 /* Views */,
 				2AFEED152A73AE8C00D7A45B /* HomeCoordinatorView.swift */,
+				2A91DB7B2BFDEA8F00D5780A /* HomeCoordinatorExperementalView.swift */,
 				2AFEED172A73AEDB00D7A45B /* HomeCoordinatorViewModel.swift */,
 				2AD1FCC02AB8466C00CEBE1E /* SetBottomPanelHidenEnvironment.swift */,
 				2A29873B2ACC087B009E8787 /* PageNavigation.swift */,
+				2A91DB7D2BFDEAD600D5780A /* HomeBottomPanelContainerExperemental.swift */,
+				2A91DB7F2BFDEB0200D5780A /* HomeBottomSheetContainer.swift */,
+				2A91DB812BFDECC900D5780A /* HomeCoordinatorExperementalViewModel.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -11026,6 +11038,7 @@
 				12E15B89270B2FAE0055EA01 /* BlockActionHandlerProtocol.swift in Sources */,
 				2E2A23002A9E463700745D78 /* SetLayoutSettingsCoordinatorViewModel.swift in Sources */,
 				3D4507BF2B9B3DE400739EFC /* MembershipNameSheetViewModel.swift in Sources */,
+				2A91DB7C2BFDEA8F00D5780A /* HomeCoordinatorExperementalView.swift in Sources */,
 				C9F0A47D28057D8F00FA16DD /* TextIconPickerViewModel.swift in Sources */,
 				120F7D58267D071400327734 /* PickerSectionHeaderView.swift in Sources */,
 				2A4E3F7D2BC6ECDA00724DBF /* BinLinkWidgetView.swift in Sources */,
@@ -11114,6 +11127,7 @@
 				2A376F5F2B861D7100CF444A /* SpaceStatus+Localize.swift in Sources */,
 				2EAA14072AA63918000A712A /* SetRelationsViewModel.swift in Sources */,
 				2A35FF902AAF203C00D6006D /* CodeLanguageListViewModel.swift in Sources */,
+				2A91DB802BFDEB0200D5780A /* HomeBottomSheetContainer.swift in Sources */,
 				2A03039828ABAA45002EFC46 /* TextRelationActionViewModelProtocol.swift in Sources */,
 				C91AFF11270C3E2F005F9386 /* ActivityViewController.swift in Sources */,
 				5391687D2632DCC600AD5C5F /* StyleCellContentView.swift in Sources */,
@@ -11783,6 +11797,7 @@
 				C9215175289801B6007FC95D /* ShimmeringBlockViewModel.swift in Sources */,
 				2A4063652A5D9D8A00ECEA79 /* EventBunchSubscribtion.swift in Sources */,
 				2A6693742A7104EA007747DD /* TodoIconImageGuideline.swift in Sources */,
+				2A91DB7E2BFDEAD600D5780A /* HomeBottomPanelContainerExperemental.swift in Sources */,
 				2A5EC7802B7D166F00DD7D89 /* InviteLinkView.swift in Sources */,
 				2A2872372B4D8C07007B3D59 /* GalleryInstallationCoordinatorView.swift in Sources */,
 				2AFB541D28621776004F7458 /* Strings.swift in Sources */,
@@ -11856,6 +11871,7 @@
 				2E2D255E28880C8D00E3DFD1 /* SetFiltersSelectionViewModel.swift in Sources */,
 				2A0303A128ABD4C9002EFC46 /* SystemURLServiceProtocol.swift in Sources */,
 				2EAA13FD2AA63918000A712A /* SetViewSettingsImagePreviewViewModel.swift in Sources */,
+				2A91DB822BFDECC900D5780A /* HomeCoordinatorExperementalViewModel.swift in Sources */,
 				127EABF92739587400C731F2 /* ObjectRelationView.swift in Sources */,
 				3D1B5F4C274BDE5D007D97AE /* SetContentViewItemConfiguration.swift in Sources */,
 				3D44984526D53D61005A3E06 /* EditorPageViewModelProtocol.swift in Sources */,

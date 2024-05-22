@@ -3,9 +3,9 @@ import SwiftUI
 import Services
 import AnytypeCore
 
-struct HomeCoordinatorView: View {
+struct HomeCoordinatorExperementalView: View {
     
-    @StateObject private var model = HomeCoordinatorViewModel()
+    @StateObject private var model = HomeCoordinatorExperementalViewModel()
     @Environment(\.keyboardDismiss) var keyboardDismiss
     @Environment(\.dismissAllPresented) private var dismissAllPresented
     
@@ -14,13 +14,34 @@ struct HomeCoordinatorView: View {
             
             NotificationCoordinatorView()
             
-            HomeBottomPanelContainer(
+//            HomeBottomPanelContainer(
+//                path: $model.editorPath,
+//                content: {
+//                    AnytypeNavigationView(path: $model.editorPath, pathChanging: $model.pathChanging) { builder in
+//                        builder.appendBuilder(for: AccountInfo.self) { info in
+//                            HomeWidgetsView(info: info, output: model)
+//                        }
+//                        builder.appendBuilder(for: EditorScreenData.self) { data in
+//                            EditorCoordinatorView(data: data)
+//                        }
+//                    }
+//                },
+//                bottomPanel: {
+//                    if let info = model.info {
+//                        HomeBottomNavigationPanelView(homePath: model.editorPath, info: info, output: model)
+//                    }
+//                }
+//            )
+            HomeBottomPanelContainerExperemental(
                 path: $model.editorPath,
+                sheetDismiss: $model.sheetDismiss,
                 content: {
+                    if let info = model.info {
+                        HomeWidgetsView(info: info, output: model)
+                    }
+                },
+                sheet: {
                     AnytypeNavigationView(path: $model.editorPath, pathChanging: $model.pathChanging) { builder in
-                        builder.appendBuilder(for: AccountInfo.self) { info in
-                            HomeWidgetsView(info: info, output: model)
-                        }
                         builder.appendBuilder(for: EditorScreenData.self) { data in
                             EditorCoordinatorView(data: data)
                         }
@@ -44,8 +65,6 @@ struct HomeCoordinatorView: View {
         .onChange(of: model.keyboardToggle) { _ in
             keyboardDismiss()
         }
-        .handleSpaceShareTip()
-        .handleSharingTip()
         .snackbar(toastBarData: $model.toastBarData)
         .sheet(item: $model.showChangeSourceData) {
             WidgetChangeSourceSearchView(data: $0)
@@ -87,9 +106,6 @@ struct HomeCoordinatorView: View {
         }
         .sheet(item: $model.showGalleryImport) { data in
             GalleryInstallationCoordinatorView(data: data)
-        }
-        .sheet(isPresented: $model.showSpaceShareTip) {
-            SpaceShareTipView()
         }
     }
 }
