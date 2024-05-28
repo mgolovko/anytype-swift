@@ -34,8 +34,6 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
     
     @Injected(\.legacySetObjectCreationCoordinator)
     private var setObjectCreationCoordinator: SetObjectCreationCoordinatorProtocol
-    @Injected(\.legacySharingTip)
-    private var sharingTipCoordinator: SharingTipCoordinatorProtocol
     
     // MARK: - State
     
@@ -114,8 +112,6 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
                 self?.switchSpace(info: newInfo)
             }
             .store(in: &subscriptions)
-        
-        sharingTipCoordinator.startObservingTips()
     }
     
     func startDeepLinkTask() async {
@@ -333,6 +329,8 @@ final class HomeCoordinatorExperementalViewModel: ObservableObject,
             try await document.openForPreview()
             guard let editorData = document.details?.editorScreenData() else { return }
             try await push(data: editorData)
+        case .spaceShareTip:
+            break
         }
     }
     
