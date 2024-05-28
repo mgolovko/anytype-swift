@@ -51,7 +51,7 @@ struct HomeBottomSheetContainer<Content: View>: View {
                     .cornerRadius(8, style: .continuous)
                     .shadow(radius: 5)
                     .offset(y: offsetY(size: readerFrame.size, safeArea: readerSafeArea.safeAreaInsets))
-                    .gesture(
+                    .simultaneousGesture(
                         DragGesture(minimumDistance: 5)
                             .updating($dragGestureActive) { value, state, transaction in
                                 state = true
