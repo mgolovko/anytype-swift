@@ -48,11 +48,11 @@ struct HomeBottomSheetContainer<Content: View>: View {
                     }
 //                    .disabled(false)
                     .frame(height: readerFrame.size.height - readerSafeArea.safeAreaInsets.top - 10)
-                    .cornerRadius(16, style: .continuous)
+                    .cornerRadius(8, style: .continuous)
                     .shadow(radius: 5)
                     .offset(y: offsetY(size: readerFrame.size, safeArea: readerSafeArea.safeAreaInsets))
                     .gesture(
-                        DragGesture()
+                        DragGesture(minimumDistance: 5)
                             .updating($dragGestureActive) { value, state, transaction in
                                 state = true
                             }
@@ -97,6 +97,12 @@ struct HomeBottomSheetContainer<Content: View>: View {
                 }
             }
             .ignoresSafeArea()
+        }
+        .background {
+            if !sheetDismiss {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+            }
         }
         .animation(.default, value: path.count)
         .animation(.default, value: sheetDismiss)

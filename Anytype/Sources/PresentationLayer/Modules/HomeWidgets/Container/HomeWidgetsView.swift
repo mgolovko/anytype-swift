@@ -28,6 +28,7 @@ private struct HomeWidgetsInternalView: View {
             } content: {
                 VStack(spacing: 12) {
                     if model.dataLoaded {
+                        Spacer.fixedHeight(40)
                         SpaceWidgetView {
                             model.onSpaceSelected()
                         }
