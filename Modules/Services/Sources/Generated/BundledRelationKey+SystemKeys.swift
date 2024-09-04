@@ -89,5 +89,7 @@ public extension BundledRelationKey {
         .syncDate,
         .syncStatus,
         .syncError,
+        .scope,
+        .lastUsedDate,
     ]
 }
