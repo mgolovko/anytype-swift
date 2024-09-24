@@ -19,3 +19,9 @@ extension HomeWidgetsState {
         self == .readonly
     }
 }
+
+
+enum HomeWidgetsExperementalState {
+    case chat
+    case widgets
+}

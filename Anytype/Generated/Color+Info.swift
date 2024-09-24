@@ -35,6 +35,7 @@ extension UIColor {
                 UIColor.BottomAlert.collectionInfo, 
                 UIColor.Button.collectionInfo, 
                 UIColor.CoverGradients.collectionInfo, 
+                UIColor.Experement.collectionInfo, 
                 UIColor.Gradients.collectionInfo, 
                 UIColor.Launch.collectionInfo, 
                 UIColor.ModalScreen.collectionInfo, 
@@ -204,6 +205,14 @@ extension UIColor.CoverGradients {
             ColorInfo(name: "tealStart", color: UIColor.CoverGradients.tealStart), 
             ColorInfo(name: "yellowEnd", color: UIColor.CoverGradients.yellowEnd), 
             ColorInfo(name: "yellowStart", color: UIColor.CoverGradients.yellowStart)
+        ]
+    )
+}
+extension UIColor.Experement {
+    static let collectionInfo = ColorCollectionInfo(
+        name: "Experement",
+        colors: [
+            ColorInfo(name: "widgetIconColor", color: UIColor.Experement.widgetIconColor)
         ]
     )
 }

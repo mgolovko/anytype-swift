@@ -29,50 +29,20 @@ private struct HomeWidgetsInternalView: View {
                     .clipped()
                     .ignoresSafeArea()
             }
-            VerticalScrollViewWithOverlayHeader {
-                HomeTopShadow()
-            } content: {
-                VStack(spacing: 12) {
-                    if model.dataLoaded {
-                        HomeUpdateSubmoduleView()
-                        SpaceWidgetView(spaceId: model.spaceId) {
-                            model.onSpaceSelected()
-                        }
-                        if FeatureFlags.allContent {
-                            AllContentWidgetView(
-                                spaceId: model.spaceId,
-                                homeState: $model.homeState,
-                                output: model.output
-                            )
-                        }
-                        if #available(iOS 17.0, *) {
-                            WidgetSwipeTipView()
-                        }
-                        ForEach(model.widgetBlocks) { widgetInfo in
-                            HomeWidgetSubmoduleView(
-                                widgetInfo: widgetInfo,
-                                widgetObject: model.widgetObject, 
-                                workspaceInfo: model.info,
-                                homeState: $model.homeState,
-                                output: model.output
-                            )
-                        }
-                        if !FeatureFlags.allContent {
-                            BinLinkWidgetView(spaceId: model.spaceId, homeState: $model.homeState, output: model.submoduleOutput())
-                        }
-                        editButtons
-                    }
-                    AnytypeNavigationSpacer()
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 12)
-                .fitIPadToReadableContentGuide()
+            
+            switch model.experementalState {
+            case .chat:
+                chatView
+            case .widgets:
+                widgetsView
             }
-            .animation(.default, value: model.widgetBlocks.count)
             
             HomeBottomPanelView(homeState: $model.homeState) {
                 model.onCreateWidgetFromEditMode()
             }
+        }
+        .throwingTask {
+            try await model.fetchChatObject()
         }
         .task {
             await model.startWidgetObjectTask()
@@ -85,7 +55,6 @@ private struct HomeWidgetsInternalView: View {
         }
         .navigationBarHidden(true)
         .anytypeStatusBar(style: .lightContent)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
         .homeBottomPanelHidden(model.homeState.isEditWidgets)
         .anytypeVerticalDrop(data: model.widgetBlocks, state: $dndState) { from, to in
             model.dropUpdate(from: from, to: to)
@@ -103,5 +72,64 @@ private struct HomeWidgetsInternalView: View {
                 model.onEditButtonTap()
             }
         }
+    }
+    
+    private var widgetsView: some View {
+        VerticalScrollViewWithOverlayHeader {
+            HomeTopShadow()
+        } content: {
+            VStack(spacing: 12) {
+                if model.dataLoaded {
+                    HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
+                    HomeUpdateSubmoduleView()
+                    SpaceWidgetView(spaceId: model.spaceId) {
+                        model.onSpaceSelected()
+                    }
+                    if FeatureFlags.allContent {
+                        AllContentWidgetView(
+                            spaceId: model.spaceId,
+                            homeState: $model.homeState,
+                            output: model.output
+                        )
+                    }
+                    if #available(iOS 17.0, *) {
+                        WidgetSwipeTipView()
+                    }
+                    ForEach(model.widgetBlocks) { widgetInfo in
+                        HomeWidgetSubmoduleView(
+                            widgetInfo: widgetInfo,
+                            widgetObject: model.widgetObject,
+                            workspaceInfo: model.info,
+                            homeState: $model.homeState,
+                            output: model.output
+                        )
+                    }
+                    if !FeatureFlags.allContent {
+                        BinLinkWidgetView(spaceId: model.spaceId, homeState: $model.homeState, output: model.submoduleOutput())
+                    }
+                    editButtons
+                }
+                AnytypeNavigationSpacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 12)
+            .fitIPadToReadableContentGuide()
+        }
+        .animation(.default, value: model.widgetBlocks.count)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+    
+    private var chatView: some View {
+        VStack(spacing: 12) {
+            HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
+                .padding(.horizontal, 20)
+            if let chatData = model.chatData {
+                DiscussionCoordinatorView(data: chatData)
+                    .environment(\.discussionColorTheme, .home)
+                    .environment(\.discussionSettings, DiscussionSetings(showHeader: false))
+            }
+        }
+        .padding(.top, 12)
+        .fitIPadToReadableContentGuide()
     }
 }

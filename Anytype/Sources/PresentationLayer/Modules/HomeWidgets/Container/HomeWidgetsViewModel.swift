@@ -25,6 +25,8 @@ final class HomeWidgetsViewModel: ObservableObject {
     private var recentStateManager: any HomeWidgetsRecentStateManagerProtocol
     @Injected(\.userDefaultsStorage)
     private var userDefaults: any UserDefaultsStorageProtocol
+    @Injected(\.searchMiddleService)
+    private var searchMiddleService: any SearchMiddleServiceProtocol
     
     weak var output: (any HomeWidgetsModuleOutput)?
     
@@ -32,8 +34,10 @@ final class HomeWidgetsViewModel: ObservableObject {
     
     @Published var widgetBlocks: [BlockWidgetInfo] = []
     @Published var homeState: HomeWidgetsState = .readonly
+    @Published var experementalState: HomeWidgetsExperementalState = .widgets
     @Published var dataLoaded: Bool = false
     @Published var wallpaper: SpaceWallpaperType = .default
+    @Published var chatData: EditorDiscussionObject?
     
     var spaceId: String { info.accountSpaceId }
     var space: SpaceView? { workspaceStorage.spaceView(spaceId: spaceId) }
@@ -66,6 +70,26 @@ final class HomeWidgetsViewModel: ObservableObject {
     func startParticipantTask() async {
         for await canEdit in accountParticipantStorage.canEditPublisher(spaceId: info.accountSpaceId).values {
             homeState = canEdit ? .readwrite : .readonly
+        }
+    }
+    
+    func fetchChatObject() async throws {
+        let request = SearchRequest(filters: [], sorts: [], fullText: "CHAT HOME OBJECT", keys: [], limit: 1)
+        let result = try await searchMiddleService.search(data: request)
+        if let chatObject = result.first, chatObject.name == "CHAT HOME OBJECT" {
+            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
+        } else {
+            let chatObject =  try await objectActionService.createObject(
+                name: "CHAT HOME OBJECT",
+                typeUniqueKey: .chat,
+                shouldDeleteEmptyObject: false,
+                shouldSelectType: false,
+                shouldSelectTemplate: false,
+                spaceId: spaceId,
+                origin: .none,
+                templateId: nil
+            )
+            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
         }
     }
     

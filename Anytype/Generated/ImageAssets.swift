@@ -347,6 +347,11 @@ internal extension ImageAsset {
   }
   enum Emoji {
     }
+  enum Experement {
+    static let inbox = ImageAsset.bundle(name: "Experement/Inbox")
+    static let objects = ImageAsset.bundle(name: "Experement/Objects")
+    static let widgets = ImageAsset.bundle(name: "Experement/Widgets")
+  }
   enum Membership {
     static let banner1 = ImageAsset.bundle(name: "Membership/banner_1")
     static let banner2 = ImageAsset.bundle(name: "Membership/banner_2")

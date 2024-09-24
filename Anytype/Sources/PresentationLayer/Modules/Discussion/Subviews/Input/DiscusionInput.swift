@@ -9,6 +9,8 @@ struct DiscusionInput: View {
     let onTapAddObject: () -> Void
     let onTapSend: () -> Void
     
+    @Environment(\.discussionColorTheme) private var colors
+    
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
             Button {
@@ -42,7 +44,8 @@ struct DiscusionInput: View {
             }
         }
         .padding(.horizontal, 8)
-        .background(Color.Background.primary)
+        .padding(.bottom, 12)
+        .background(colors.inputAreaBackground)
     }
 }
 

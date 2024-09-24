@@ -5,13 +5,18 @@ struct DiscussionView: View {
     @StateObject private var model: DiscussionViewModel
     @State private var actionState: CGFloat = 0
     
+    @Environment(\.discussionSettings) private var discussionSettings
+    @Environment(\.discussionColorTheme) private var colors
+    
     init(objectId: String, spaceId: String, chatId: String, output: (any DiscussionModuleOutput)?) {
         self._model = StateObject(wrappedValue: DiscussionViewModel(objectId: objectId, spaceId: spaceId, chatId: chatId, output: output))
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            headerView
+            if discussionSettings.showHeader {
+                headerView
+            }
             DiscussionSpacingContainer {
                 mainView
                     .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -41,6 +46,7 @@ struct DiscussionView: View {
         .throwingTask {
             try await model.subscribeOnMessages()
         }
+        .background(colors.listBackground)
     }
     
     private var bottomPanel: some View {

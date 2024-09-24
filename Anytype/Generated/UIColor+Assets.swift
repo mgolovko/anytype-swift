@@ -137,6 +137,11 @@ extension UIColor {
       internal static let yellowStart = UIColor(asset: Asset.CoverGradients.yellowStart)
     }
     
+    // MARK: - Experement
+    enum Experement {
+      internal static let widgetIconColor = UIColor(asset: Asset.Experement.widgetIconColor)
+    }
+    
     // MARK: - Gradients
     enum Gradients {
       

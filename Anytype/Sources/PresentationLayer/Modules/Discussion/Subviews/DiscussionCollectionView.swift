@@ -26,6 +26,7 @@ struct DiscussionCollectionView<Item: Hashable, DataView: View>: UIViewRepresent
             let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
             section.interGroupSpacing = 12
             section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+            section.decorationItems = [] // Delete section background
             return section
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,6 +35,7 @@ struct DiscussionCollectionView<Item: Hashable, DataView: View>: UIViewRepresent
         collectionView.transform = CGAffineTransform(scaleX: 1, y: -1)
         collectionView.delegate = context.coordinator
         collectionView.scrollsToTop = false
+        collectionView.keyboardDismissMode = .interactive
         
         let itemRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> {
             (cell, indexPath, item) in
@@ -47,6 +49,8 @@ struct DiscussionCollectionView<Item: Hashable, DataView: View>: UIViewRepresent
         let dataSource = UICollectionViewDiffableDataSource<OneSection, Item>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell in
             let cell = collectionView.dequeueConfiguredReusableCell(using: itemRegistration, for: indexPath, item: item)
             cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+            cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+            
             return cell
         }
         

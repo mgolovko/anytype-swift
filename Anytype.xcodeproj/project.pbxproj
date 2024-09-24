@@ -330,6 +330,7 @@
 		2A18929F2A8F6FB000A19740 /* NonFatalLoggerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18929E2A8F6FB000A19740 /* NonFatalLoggerHandler.swift */; };
 		2A1AD7782B7118BF000EEBC0 /* TopNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AD7772B7118BF000EEBC0 /* TopNotificationView.swift */; };
 		2A1AEDA028FD318A008C3660 /* MarkupViewTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AED9F28FD318A008C3660 /* MarkupViewTypes.swift */; };
+		2A1B342C2CA2F57C00EA5775 /* DiscussionColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B342B2CA2F56F00EA5775 /* DiscussionColorTheme.swift */; };
 		2A1D2B3E2A42CD0300B07596 /* UIUserInterfaceStyle+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1D2B3D2A42CD0300B07596 /* UIUserInterfaceStyle+Analytics.swift */; };
 		2A1D375A2C2473F100CCB4DC /* GalleryWidgetShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1D37592C2473F100CCB4DC /* GalleryWidgetShowAllView.swift */; };
 		2A1DEA592B5EB40C00A00883 /* AccountDeleteError+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1DEA582B5EB40C00A00883 /* AccountDeleteError+Localize.swift */; };
@@ -377,6 +378,7 @@
 		2A2B33302A7BB6BF004BD906 /* SpacePlusRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B332F2A7BB6BF004BD906 /* SpacePlusRow.swift */; };
 		2A2B33352A7BE5E0004BD906 /* SpaceWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B33342A7BE5E0004BD906 /* SpaceWidgetViewModel.swift */; };
 		2A2B33372A7BE5E8004BD906 /* SpaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B33362A7BE5E8004BD906 /* SpaceWidgetView.swift */; };
+		2A2B8BDF2CA2D2CB006ABE43 /* HomeSpaceExperementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B8BDE2CA2D2C4006ABE43 /* HomeSpaceExperementView.swift */; };
 		2A2C330028919576008BC326 /* RelationMetadataFormat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2C32FF28919576008BC326 /* RelationMetadataFormat+Extensions.swift */; };
 		2A2C330D28928DA7008BC326 /* CoordinatorsDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2C330C28928DA7008BC326 /* CoordinatorsDI.swift */; };
 		2A2C3311289294B8008BC326 /* ModulesDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2C3310289294B8008BC326 /* ModulesDI.swift */; };
@@ -2216,6 +2218,7 @@
 		2A18929E2A8F6FB000A19740 /* NonFatalLoggerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonFatalLoggerHandler.swift; sourceTree = "<group>"; };
 		2A1AD7772B7118BF000EEBC0 /* TopNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNotificationView.swift; sourceTree = "<group>"; };
 		2A1AED9F28FD318A008C3660 /* MarkupViewTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupViewTypes.swift; sourceTree = "<group>"; };
+		2A1B342B2CA2F56F00EA5775 /* DiscussionColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionColorTheme.swift; sourceTree = "<group>"; };
 		2A1B74012B03685A00E9F241 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A1B74032B03687D00E9F241 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A1B74042B03688000E9F241 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2274,6 +2277,7 @@
 		2A2B332F2A7BB6BF004BD906 /* SpacePlusRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePlusRow.swift; sourceTree = "<group>"; };
 		2A2B33342A7BE5E0004BD906 /* SpaceWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceWidgetViewModel.swift; sourceTree = "<group>"; };
 		2A2B33362A7BE5E8004BD906 /* SpaceWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceWidgetView.swift; sourceTree = "<group>"; };
+		2A2B8BDE2CA2D2C4006ABE43 /* HomeSpaceExperementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpaceExperementView.swift; sourceTree = "<group>"; };
 		2A2C32FF28919576008BC326 /* RelationMetadataFormat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RelationMetadataFormat+Extensions.swift"; sourceTree = "<group>"; };
 		2A2C330C28928DA7008BC326 /* CoordinatorsDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorsDI.swift; sourceTree = "<group>"; };
 		2A2C3310289294B8008BC326 /* ModulesDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesDI.swift; sourceTree = "<group>"; };
@@ -5723,6 +5727,15 @@
 			path = Space;
 			sourceTree = "<group>";
 		};
+		2A2B8BDD2CA2D2BC006ABE43 /* Experement */ = {
+			isa = PBXGroup;
+			children = (
+				2A1B342B2CA2F56F00EA5775 /* DiscussionColorTheme.swift */,
+				2A2B8BDE2CA2D2C4006ABE43 /* HomeSpaceExperementView.swift */,
+			);
+			path = Experement;
+			sourceTree = "<group>";
+		};
 		2A2C330128928633008BC326 /* RelationValueFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -6691,6 +6704,7 @@
 		2A9486522950A399007A5586 /* HomeWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				2A2B8BDD2CA2D2BC006ABE43 /* Experement */,
 				2A4E5C88296C0B76002BB71B /* Submodules */,
 				2AAF343F29559DAD00921320 /* Container */,
 				2A4919A629530AD200FCEAC9 /* Widgets */,
@@ -11725,6 +11739,7 @@
 				2A945D3C299E2CD300C34C86 /* WidgetEmptyView.swift in Sources */,
 				2E975EF1287C23DA004DE574 /* SetSortsListView.swift in Sources */,
 				53F7442F27F4BBE9005C9BB0 /* ObjectPreviewRouter.swift in Sources */,
+				2A2B8BDF2CA2D2CB006ABE43 /* HomeSpaceExperementView.swift in Sources */,
 				12FD9D252767179A00991886 /* RelationDate.swift in Sources */,
 				3DA7DC0F2BDFBCD200F8F4B5 /* TextRelationActionViewModelBuilder.swift in Sources */,
 				2E6283272B84F5940018EF9C /* FeaturedRelationsView.swift in Sources */,
@@ -11797,6 +11812,7 @@
 				3DF58C522BD2CD780056D0BB /* MembershipTier+Mocks.swift in Sources */,
 				EAED57D026A1A33500374A46 /* TextBlockContentView+TextViewDelegate.swift in Sources */,
 				12426A1626DCE1B900693B1F /* ImageBuilderProtocol.swift in Sources */,
+				2A1B342C2CA2F57C00EA5775 /* DiscussionColorTheme.swift in Sources */,
 				C9A4774028DB0B3600D05EA3 /* AnytypePreviewController.swift in Sources */,
 				8637768A2A66644B0040308E /* SetObjectCreationSettingsInteractor.swift in Sources */,
 				2E412D152847B15C00C973FF /* SetSort.swift in Sources */,

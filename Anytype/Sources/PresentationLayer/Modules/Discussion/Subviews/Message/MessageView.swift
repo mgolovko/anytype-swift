@@ -19,6 +19,8 @@ private struct MessageInternalView: View {
     @State private var contentSize: CGSize = .zero
     @State private var headerSize: CGSize = .zero
     
+    @Environment(\.discussionColorTheme) private var colors
+    
     init(
         data: MessageViewData,
         output: (any MessageModuleOutput)? = nil
@@ -46,7 +48,7 @@ private struct MessageInternalView: View {
     }
     
     private var messageBackgorundColor: Color {
-        return model.isYourMessage ? Color.VeryLight.green : Color.VeryLight.grey
+        return model.isYourMessage ? colors.yourMesssageBackground : colors.messageBackground
     }
     
     private var content: some View {
