@@ -41,7 +41,7 @@ struct HomeSpaceExperementView: View {
                     }
                     
                 Image(asset: .Experement.inbox)
-                    .foregroundStyle(Color.Experement.widgetIconColor)
+                    .foregroundStyle(Color.Experement.widgetIconNewColor)
                     .frame(width: 52, height: 52)
                     .background(Color.Widget.card)
                     .cornerRadius(16, style: .continuous)
@@ -49,7 +49,7 @@ struct HomeSpaceExperementView: View {
             }
             VStack {
                 Image(asset: .Experement.widgets)
-                    .foregroundStyle(Color.Experement.widgetIconColor)
+                    .foregroundStyle(Color.Experement.widgetIconNewColor)
                     .frame(width: 52, height: 52)
                     .background(Color.Widget.card.opacity(state == .widgets ? 0.5 : 1))
                     .cornerRadius(16, style: .continuous)
@@ -57,7 +57,7 @@ struct HomeSpaceExperementView: View {
                         state = .widgets
                     }
                 Image(asset: .Experement.objects)
-                    .foregroundStyle(Color.Experement.widgetIconColor)
+                    .foregroundStyle(Color.Experement.widgetIconNewColor)
                     .frame(width: 52, height: 52)
                     .background(Color.Widget.card)
                     .cornerRadius(16, style: .continuous)
