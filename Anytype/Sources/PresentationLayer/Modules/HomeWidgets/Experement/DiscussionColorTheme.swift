@@ -46,8 +46,8 @@ extension DiscussionColorTheme {
         inputAreaBackground: .clear,
         inputBackground1Layer: .Widget.bottomPanel,
         inputBackground2Layer: .clear,
-        inputPrimaryAction: .Experement.widgetIconColor,
-        inputAction: .Experement.widgetIconColor
+        inputPrimaryAction: .Experement.widgetIconNewColor,
+        inputAction: .Experement.widgetIconNewColor
     )
 }
 

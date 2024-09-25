@@ -133,7 +133,7 @@ internal enum Asset {
     static let yellowStart = ColorAsset(name: "CoverGradients/yellowStart")
   }
   internal enum Experement {
-    static let widgetIconColor = ColorAsset(name: "Experement/widgetIconColor")
+    static let widgetIconNewColor = ColorAsset(name: "Experement/widgetIconNewColor")
   }
   internal enum Gradients {
     internal enum UpdateAlert {

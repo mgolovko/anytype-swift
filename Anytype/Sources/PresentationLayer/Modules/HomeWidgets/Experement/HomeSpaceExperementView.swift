@@ -32,7 +32,7 @@ struct HomeSpaceExperementView: View {
             
             VStack {
                 Image(asset: .X32.sendMessage)
-                    .foregroundStyle(Color.Experement.widgetIconColor)
+                    .foregroundStyle(Color.Experement.widgetIconNewColor)
                     .frame(width: 52, height: 52)
                     .background(Color.Widget.card.opacity(state == .chat ? 0.5 : 1))
                     .cornerRadius(16, style: .continuous)
