@@ -21,6 +21,10 @@ struct DiscussionColorTheme {
     let messageBackground: Color
     let listBackground: Color
     let inputAreaBackground: Color
+    let inputBackground1Layer: Color
+    let inputBackground2Layer: Color
+    let inputPrimaryAction: Color
+    let inputAction: Color
 }
 
 extension DiscussionColorTheme {
@@ -28,14 +32,22 @@ extension DiscussionColorTheme {
         yourMesssageBackground: .VeryLight.green,
         messageBackground: .VeryLight.grey,
         listBackground: .Background.primary,
-        inputAreaBackground: .Background.primary
+        inputAreaBackground: .Background.primary,
+        inputBackground1Layer: .Navigation.background,
+        inputBackground2Layer: .clear,
+        inputPrimaryAction: .Button.button,
+        inputAction: .Button.active
     )
     
     static let home = DiscussionColorTheme(
         yourMesssageBackground: .VeryLight.green,
         messageBackground: .VeryLight.grey,
         listBackground: .clear,
-        inputAreaBackground: .clear
+        inputAreaBackground: .clear,
+        inputBackground1Layer: .Widget.bottomPanel,
+        inputBackground2Layer: .clear,
+        inputPrimaryAction: .Experement.widgetIconColor,
+        inputAction: .Experement.widgetIconColor
     )
 }
 
@@ -46,7 +58,11 @@ struct DiscussionColorThemeKey: EnvironmentKey {
         yourMesssageBackground: .red,
         messageBackground: .gray,
         listBackground: .orange,
-        inputAreaBackground: .orange
+        inputAreaBackground: .orange,
+        inputBackground1Layer: .red,
+        inputBackground2Layer: .orange,
+        inputPrimaryAction: .orange,
+        inputAction: .blue
     )
 }
 

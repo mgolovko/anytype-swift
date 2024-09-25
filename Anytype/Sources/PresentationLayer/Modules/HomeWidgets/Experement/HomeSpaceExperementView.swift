@@ -34,7 +34,7 @@ struct HomeSpaceExperementView: View {
                 Image(asset: .X32.sendMessage)
                     .foregroundStyle(Color.Experement.widgetIconColor)
                     .frame(width: 52, height: 52)
-                    .background(Color.Widget.card)
+                    .background(Color.Widget.card.opacity(state == .chat ? 0.5 : 1))
                     .cornerRadius(16, style: .continuous)
                     .onTapGesture {
                         state = .chat
@@ -51,7 +51,7 @@ struct HomeSpaceExperementView: View {
                 Image(asset: .Experement.widgets)
                     .foregroundStyle(Color.Experement.widgetIconColor)
                     .frame(width: 52, height: 52)
-                    .background(Color.Widget.card)
+                    .background(Color.Widget.card.opacity(state == .widgets ? 0.5 : 1))
                     .cornerRadius(16, style: .continuous)
                     .onTapGesture {
                         state = .widgets

@@ -10,16 +10,23 @@ struct DiscusionInput: View {
     let onTapSend: () -> Void
     
     @Environment(\.discussionColorTheme) private var colors
+    @Environment(\.pageNavigation) private var pageNavigation
+    @Environment(\.setHomeBottomPanelHidden) @Binding private var setBottomPanelHidden
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
-            Button {
-                onTapAddObject()
-            } label: {
-                Image(asset: .X32.plus)
-                    .foregroundColor(Color.Button.active)
+            
+            if setBottomPanelHidden {
+                Button {
+                    pageNavigation.pop()
+                } label: {
+                    Image(asset: .X32.Arrow.left)
+                        .foregroundColor(colors.inputAction)
+                }
+                .frame(height: 56)
+                
             }
-            .frame(height: 56)
+            
             ZStack(alignment: .topLeading) {
                 DiscussionTextView(text: $text, editing: $editing, mention: $mention, minHeight: 56, maxHeight: 212)
                 if text.string.isEmpty {
@@ -32,18 +39,36 @@ struct DiscusionInput: View {
                         .lineLimit(1)
                 }
             }
+            .padding(.leading, setBottomPanelHidden ? 8 : 0)
+            .overlay(alignment: .leading) {
+                if setBottomPanelHidden {
+                    Color.Shape.primary
+                        .frame(width: .onePixel)
+                }
+            }
+            
+            Button {
+                onTapAddObject()
+            } label: {
+                Image(asset: .X24.attachment)
+                    .foregroundColor(colors.inputAction)
+            }
+            .frame(height: 56)
             
             if hasAdditionalData || !text.string.isEmpty {
                 Button {
                     onTapSend()
                 } label: {
                     Image(asset: .X32.sendMessage)
-                        .foregroundColor(Color.Button.button)
+                        .foregroundColor(colors.inputPrimaryAction)
                 }
                 .frame(height: 56)
             }
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 12)
+        .background(colors.inputBackground1Layer)
+        .cornerRadius(16, style: .continuous)
+        .padding(.horizontal, 32)
         .padding(.bottom, 12)
         .background(colors.inputAreaBackground)
     }

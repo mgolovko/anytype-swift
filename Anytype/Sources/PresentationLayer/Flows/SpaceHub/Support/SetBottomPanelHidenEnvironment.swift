@@ -1,11 +1,11 @@
 import Foundation
 import SwiftUI
 
-private struct SetHomeBottomPanelHidden: EnvironmentKey {
+struct SetHomeBottomPanelHidden: EnvironmentKey {
     static let defaultValue = Binding.constant(true)
 }
 
-private extension EnvironmentValues {
+extension EnvironmentValues {
     var setHomeBottomPanelHidden: Binding<Bool> {
         get { self[SetHomeBottomPanelHidden.self] }
         set { self[SetHomeBottomPanelHidden.self] = newValue }

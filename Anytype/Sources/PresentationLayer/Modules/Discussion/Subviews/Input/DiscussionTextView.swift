@@ -35,6 +35,7 @@ struct DiscussionTextView: UIViewRepresentable {
         textView.delegate = context.coordinator
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
         textView.notEditableAttributes = [.discussionMention]
+        textView.backgroundColor = .clear
         
         if let textContentManager = textView.textLayoutManager?.textContentManager {
             textContentManager.delegate = context.coordinator

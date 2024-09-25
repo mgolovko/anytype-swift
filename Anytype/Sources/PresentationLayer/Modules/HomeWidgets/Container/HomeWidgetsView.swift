@@ -55,7 +55,6 @@ private struct HomeWidgetsInternalView: View {
         }
         .navigationBarHidden(true)
         .anytypeStatusBar(style: .lightContent)
-        .homeBottomPanelHidden(model.homeState.isEditWidgets)
         .anytypeVerticalDrop(data: model.widgetBlocks, state: $dndState) { from, to in
             model.dropUpdate(from: from, to: to)
         } dropFinish: { from, to in
@@ -117,6 +116,7 @@ private struct HomeWidgetsInternalView: View {
         }
         .animation(.default, value: model.widgetBlocks.count)
         .ignoresSafeArea(.keyboard, edges: .bottom)
+        .homeBottomPanelHidden(model.homeState.isEditWidgets)
     }
     
     private var chatView: some View {
@@ -131,5 +131,6 @@ private struct HomeWidgetsInternalView: View {
         }
         .padding(.top, 12)
         .fitIPadToReadableContentGuide()
+        .homeBottomPanelHidden(true)
     }
 }
