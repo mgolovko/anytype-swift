@@ -32,7 +32,7 @@ struct DiscussionCoordinatorView: View {
         if let chatId = model.chatId {
             DiscussionView(objectId: model.objectId, spaceId: model.spaceId, chatId: chatId, output: model)
         } else {
-            AnytypeDivider()
+            Spacer()
         }
     }
 }

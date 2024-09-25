@@ -15,7 +15,8 @@ extension EnvironmentValues {
 extension View {
     func setKeyboardDismissEnv(window: UIWindow?) -> some View {
         environment(\.keyboardDismiss, { [weak window] in
-            window?.resignFirstResponder()
+//            window?.resignFirstResponder()
+            window?.endEditing(true)
         })
     }
 }

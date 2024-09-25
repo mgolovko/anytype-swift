@@ -34,7 +34,7 @@ final class HomeWidgetsViewModel: ObservableObject {
     
     @Published var widgetBlocks: [BlockWidgetInfo] = []
     @Published var homeState: HomeWidgetsState = .readonly
-    @Published var experementalState: HomeWidgetsExperementalState = .widgets
+    @Published var experementalState: HomeWidgetsExperementalState = .chat
     @Published var dataLoaded: Bool = false
     @Published var wallpaper: SpaceWallpaperType = .default
     @Published var chatData: EditorDiscussionObject?

@@ -12,12 +12,14 @@ struct DiscusionInput: View {
     @Environment(\.discussionColorTheme) private var colors
     @Environment(\.pageNavigation) private var pageNavigation
     @Environment(\.setHomeBottomPanelHidden) @Binding private var setBottomPanelHidden
+    @Environment(\.keyboardDismiss) private var keyboardDismiss
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
             
             if setBottomPanelHidden {
                 Button {
+                    keyboardDismiss()
                     pageNavigation.pop()
                 } label: {
                     Image(asset: .X32.Arrow.left)
