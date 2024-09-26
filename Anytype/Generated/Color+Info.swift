@@ -212,7 +212,8 @@ extension UIColor.Experement {
     static let collectionInfo = ColorCollectionInfo(
         name: "Experement",
         colors: [
-            ColorInfo(name: "widgetIconNewColor", color: UIColor.Experement.widgetIconNewColor)
+            ColorInfo(name: "widgetIconNewColor", color: UIColor.Experement.widgetIconNewColor), 
+            ColorInfo(name: "widgetIconNewColor2", color: UIColor.Experement.widgetIconNewColor2)
         ]
     )
 }

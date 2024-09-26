@@ -134,6 +134,7 @@ internal enum Asset {
   }
   internal enum Experement {
     static let widgetIconNewColor = ColorAsset(name: "Experement/widgetIconNewColor")
+    static let widgetIconNewColor2 = ColorAsset(name: "Experement/widgetIconNewColor2")
   }
   internal enum Gradients {
     internal enum UpdateAlert {

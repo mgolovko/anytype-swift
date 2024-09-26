@@ -21,7 +21,7 @@ extension HomeWidgetsState {
 }
 
 
-enum HomeWidgetsExperementalState {
+enum HomeWidgetsExperementalState: Hashable {
     case chat
     case widgets
 }

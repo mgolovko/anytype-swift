@@ -140,6 +140,7 @@ extension Color {
     // MARK: - Experement
     enum Experement {
       internal static let widgetIconNewColor = Color(asset: Asset.Experement.widgetIconNewColor)
+      internal static let widgetIconNewColor2 = Color(asset: Asset.Experement.widgetIconNewColor2)
     }
     
     // MARK: - Gradients

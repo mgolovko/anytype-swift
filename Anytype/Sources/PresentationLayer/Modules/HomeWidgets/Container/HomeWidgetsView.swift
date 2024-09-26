@@ -30,16 +30,45 @@ private struct HomeWidgetsInternalView: View {
                     .ignoresSafeArea()
             }
             
-            switch model.experementalState {
-            case .chat:
+            TabView(selection: $model.experementalState) {
                 chatView
-            case .widgets:
+                    .tag(HomeWidgetsExperementalState.chat)
+                
                 widgetsView
+                    .tag(HomeWidgetsExperementalState.widgets)
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .transition(.slide)
+            .animation(.default, value: model.experementalState)
+            
+//            chatView
+//                .opacity(model.experementalState == .chat ? 0 : 1)
+//            
+//            widgetsView
+//                .opacity(model.experementalState == .widgets ? 0 : 1)
+            
+//            switch model.experementalState {
+//            case .chat:
+//                chatView
+//                    .transition(.opacity)
+////                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)).combined(with: .opacity))
+//                    .id("cv")
+//            case .widgets:
+//                widgetsView
+//                    .transition(.opacity)
+////                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)).combined(with: .opacity))
+//                    .id("ww")
+//            }
             
             HomeBottomPanelView(homeState: $model.homeState) {
                 model.onCreateWidgetFromEditMode()
             }
+        }
+        
+        .safeAreaInset(edge: .top, spacing: 0) {
+            HomeSpaceExperementView2(spaceId: model.spaceId, state: $model.experementalState)
+                .background(Color.Navigation.background)
+                .background(.ultraThinMaterial)
         }
         .throwingTask {
             try await model.fetchChatObject()
@@ -79,7 +108,7 @@ private struct HomeWidgetsInternalView: View {
         } content: {
             VStack(spacing: 12) {
                 if model.dataLoaded {
-                    HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
+//                    HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
                     HomeUpdateSubmoduleView()
                     SpaceWidgetView(spaceId: model.spaceId) {
                         model.onSpaceSelected()
@@ -120,16 +149,17 @@ private struct HomeWidgetsInternalView: View {
     }
     
     private var chatView: some View {
-        VStack(spacing: 12) {
-            HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
-                .padding(.horizontal, 20)
+        VStack(spacing: 0) {
+//            HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
+//                .padding(.horizontal, 20)
             if let chatData = model.chatData {
                 DiscussionCoordinatorView(data: chatData)
+//                    .background(Color.red)
                     .environment(\.discussionColorTheme, .home)
                     .environment(\.discussionSettings, DiscussionSetings(showHeader: false))
             }
         }
-        .padding(.top, 12)
+//        .padding(.top, 12)
         .fitIPadToReadableContentGuide()
         .homeBottomPanelHidden(true)
     }
