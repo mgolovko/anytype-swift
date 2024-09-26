@@ -75,8 +75,8 @@ final class HomeSpaceExperementViewModel: ObservableObject {
     
     private let spaceId: String
     
-    @Injected(\.accountParticipantsStorage)
-    private var accountParticipantsStorage: any AccountParticipantsStorageProtocol
+    @Injected(\.workspaceStorage)
+    private var workspaceStorage: any WorkspacesStorageProtocol
     
     @Published var name: String = ""
     @Published var icon: Icon? = nil
@@ -86,9 +86,9 @@ final class HomeSpaceExperementViewModel: ObservableObject {
     }
     
     func startSubscription() async {
-        for await participant in await accountParticipantsStorage.participantPublisher(spaceId: spaceId).values {
-            name = participant.title
-            icon = participant.icon.map { Icon.object($0) }
+        for await spaceView in workspaceStorage.spaceViewPublisher(spaceId: spaceId).values {
+            name = spaceView.name
+            icon = spaceView.objectIconImage
         }
     }
 }

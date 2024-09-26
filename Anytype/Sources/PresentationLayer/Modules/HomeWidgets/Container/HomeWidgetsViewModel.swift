@@ -74,7 +74,7 @@ final class HomeWidgetsViewModel: ObservableObject {
     }
     
     func fetchChatObject() async throws {
-        let request = SearchRequest(filters: [], sorts: [], fullText: "CHAT HOME OBJECT", keys: [], limit: 1)
+        let request = SearchRequest(filters: [SearchHelper.spaceId(spaceId)], sorts: [], fullText: "CHAT HOME OBJECT", keys: [], limit: 1)
         let result = try await searchMiddleService.search(data: request)
         if let chatObject = result.first, chatObject.name == "CHAT HOME OBJECT" {
             chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
