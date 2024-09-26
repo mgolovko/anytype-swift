@@ -30,22 +30,22 @@ private struct HomeWidgetsInternalView: View {
                     .ignoresSafeArea()
             }
             
-            TabView(selection: $model.experementalState) {
-                chatView
-                    .tag(HomeWidgetsExperementalState.chat)
-                
-                widgetsView
-                    .tag(HomeWidgetsExperementalState.widgets)
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .transition(.slide)
-            .animation(.default, value: model.experementalState)
+//            TabView(selection: $model.experementalState) {
+//                chatView
+//                    .tag(HomeWidgetsExperementalState.chat)
+//                
+//                widgetsView
+//                    .tag(HomeWidgetsExperementalState.widgets)
+//            }
+//            .tabViewStyle(.page(indexDisplayMode: .never))
+//            .transition(.slide)
+//            .animation(.default, value: model.experementalState)
             
-//            chatView
-//                .opacity(model.experementalState == .chat ? 0 : 1)
-//            
-//            widgetsView
-//                .opacity(model.experementalState == .widgets ? 0 : 1)
+            chatView
+                .opacity(model.experementalState == .chat ? 0 : 1)
+            
+            widgetsView
+                .opacity(model.experementalState == .widgets ? 0 : 1)
             
 //            switch model.experementalState {
 //            case .chat:
