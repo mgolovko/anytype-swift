@@ -44,6 +44,8 @@ private struct HomeWidgetsInternalView: View {
             
             chatView
                 .opacity(model.experementalState == .chat ? 1 : 0)
+//                .ignoresSafeArea(.container)
+//                .padding(.bottom, 20)
             
             widgetsView
                 .opacity(model.experementalState == .widgets ? 1 : 0)
@@ -69,7 +71,12 @@ private struct HomeWidgetsInternalView: View {
             keyboardDismiss()
         }
         .safeAreaInset(edge: .top, spacing: 0) {
-            HomeSpaceExperementView2(spaceId: model.spaceId, state: $model.experementalState)
+            HomeSpaceExperementView2(
+                spaceId: model.spaceId,
+                state: $model.experementalState,
+                spaceSelected: { model.onSpaceSelected() },
+                showAllContent: { model.output?.onObjectSelected(screenData: .allContent(spaceId: model.spaceId)) }
+            )
                 .background(Color.Navigation.background)
                 .background(.ultraThinMaterial)
         }
@@ -92,6 +99,7 @@ private struct HomeWidgetsInternalView: View {
         } dropFinish: { from, to in
             model.dropFinish(from: from, to: to)
         }
+        .homeBottomPanelHidden(model.experementalState == .chat ? true : model.homeState.isEditWidgets)
     }
     
     private var editButtons: some View {
@@ -112,17 +120,17 @@ private struct HomeWidgetsInternalView: View {
             VStack(spacing: 12) {
                 if model.dataLoaded {
 //                    HomeSpaceExperementView(spaceId: model.spaceId, state: $model.experementalState)
-                    HomeUpdateSubmoduleView()
-                    SpaceWidgetView(spaceId: model.spaceId) {
-                        model.onSpaceSelected()
-                    }
-                    if FeatureFlags.allContent {
-                        AllContentWidgetView(
-                            spaceId: model.spaceId,
-                            homeState: $model.homeState,
-                            output: model.output
-                        )
-                    }
+//                    HomeUpdateSubmoduleView()
+//                    SpaceWidgetView(spaceId: model.spaceId) {
+//                        model.onSpaceSelected()
+//                    }
+//                    if FeatureFlags.allContent {
+//                        AllContentWidgetView(
+//                            spaceId: model.spaceId,
+//                            homeState: $model.homeState,
+//                            output: model.output
+//                        )
+//                    }
                     if #available(iOS 17.0, *) {
                         WidgetSwipeTipView()
                     }
@@ -148,7 +156,7 @@ private struct HomeWidgetsInternalView: View {
         }
         .animation(.default, value: model.widgetBlocks.count)
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .homeBottomPanelHidden(model.homeState.isEditWidgets)
+//        .homeBottomPanelHidden(model.homeState.isEditWidgets)
     }
     
     private var chatView: some View {
@@ -164,6 +172,5 @@ private struct HomeWidgetsInternalView: View {
         }
 //        .padding(.top, 12)
         .fitIPadToReadableContentGuide()
-        .homeBottomPanelHidden(true)
     }
 }

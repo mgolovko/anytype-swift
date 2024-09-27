@@ -47,6 +47,7 @@ struct DiscussionView: View {
             try await model.subscribeOnMessages()
         }
         .background(colors.listBackground)
+        .homeBottomPanelHidden(true)
     }
     
     private var bottomPanel: some View {

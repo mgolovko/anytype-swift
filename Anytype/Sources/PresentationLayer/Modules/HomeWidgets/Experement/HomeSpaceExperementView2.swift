@@ -6,9 +6,14 @@ struct HomeSpaceExperementView2: View {
     @StateObject private var model: HomeSpaceExperementViewModel2
     @Binding private var state: HomeWidgetsExperementalState
     
-    init(spaceId: String, state: Binding<HomeWidgetsExperementalState>) {
+    private let spaceSelected: () -> Void
+    private let showAllContent: () -> Void
+    
+    init(spaceId: String, state: Binding<HomeWidgetsExperementalState>, spaceSelected: @escaping () -> Void, showAllContent: @escaping () -> Void) {
         self._model = StateObject(wrappedValue: HomeSpaceExperementViewModel2(spaceId: spaceId))
         self._state = state
+        self.spaceSelected = spaceSelected
+        self.showAllContent = showAllContent
     }
     
     var body: some View {
@@ -16,18 +21,24 @@ struct HomeSpaceExperementView2: View {
             
             Spacer.fixedWidth(31)
             
-            IconView(icon: model.icon)
-                .frame(width: 48, height: 48)
-                .padding(.vertical, 31)
-            
-            Spacer.fixedWidth(26)
-            
-            Text(verbatim: model.name)
-                .anytypeStyle(.previewTitle2Medium)
-                .foregroundStyle(Color.Text.primary)
-                .lineLimit(2)
-            
-            Spacer.fixedWidth(10)
+            Group {
+                IconView(icon: model.icon)
+                    .frame(width: 48, height: 48)
+                    .padding(.vertical, 31)
+                
+                Spacer.fixedWidth(26)
+                
+                Text(verbatim: model.name)
+                    .anytypeStyle(.previewTitle2Medium)
+                    .foregroundStyle(Color.Text.primary)
+                    .lineLimit(2)
+                
+                Spacer.fixedWidth(10)
+            }
+            .fixTappableArea()
+            .onTapGesture {
+                spaceSelected()
+            }
             
             Spacer()
             
@@ -65,6 +76,9 @@ struct HomeSpaceExperementView2: View {
                 Image(asset: .Experement.objects)
                     .foregroundStyle(Color.Experement.widgetIconNewColor2)
                     .frame(width: 36, height: 36)
+                    .onTapGesture {
+                        showAllContent()
+                    }
 //                    .background(Color.Widget.card)
 //                    .cornerRadius(16, style: .continuous)
                 

@@ -35,7 +35,7 @@ struct DiscussionSpacingContainer<Content: View>: View {
         }
         
         return allAreaInsets.bottom == withoutKeyboardAreaInsets.bottom
-            ? allAreaInsets.bottom + navigationSize.height
+            ? allAreaInsets.bottom // + navigationSize.height
             : allAreaInsets.bottom
     }
 }

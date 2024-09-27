@@ -123,6 +123,10 @@ struct DiscussionCollectionView<Item: Hashable, DataView: View>: UIViewRepresent
     func makeCoordinator() -> DiscussionCollectionViewCoordinator<OneSection, Item> {
         DiscussionCollectionViewCoordinator<OneSection, Item>()
     }
+//    
+//    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UICollectionView, context: Context) -> CGSize? {
+//        return CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+//    }
 }
 
 final class DiscussionCollectionViewCoordinator<Section: Hashable, Item: Hashable>: NSObject, UICollectionViewDelegate {
