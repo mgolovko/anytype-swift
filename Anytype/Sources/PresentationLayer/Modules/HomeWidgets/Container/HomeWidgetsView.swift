@@ -16,6 +16,7 @@ struct HomeWidgetsView: View {
 private struct HomeWidgetsInternalView: View {
     @StateObject private var model: HomeWidgetsViewModel
     @State var dndState = DragState()
+    @Environment(\.keyboardDismiss) private var keyboardDismiss
     
     init(info: AccountInfo, output: (any HomeWidgetsModuleOutput)?) {
         self._model = StateObject(wrappedValue: HomeWidgetsViewModel(info: info, output: output))
@@ -42,10 +43,10 @@ private struct HomeWidgetsInternalView: View {
 //            .animation(.default, value: model.experementalState)
             
             chatView
-                .opacity(model.experementalState == .chat ? 0 : 1)
+                .opacity(model.experementalState == .chat ? 1 : 0)
             
             widgetsView
-                .opacity(model.experementalState == .widgets ? 0 : 1)
+                .opacity(model.experementalState == .widgets ? 1 : 0)
             
 //            switch model.experementalState {
 //            case .chat:
@@ -64,7 +65,9 @@ private struct HomeWidgetsInternalView: View {
                 model.onCreateWidgetFromEditMode()
             }
         }
-        
+        .onChange(of: model.experementalState) { _ in
+            keyboardDismiss()
+        }
         .safeAreaInset(edge: .top, spacing: 0) {
             HomeSpaceExperementView2(spaceId: model.spaceId, state: $model.experementalState)
                 .background(Color.Navigation.background)
