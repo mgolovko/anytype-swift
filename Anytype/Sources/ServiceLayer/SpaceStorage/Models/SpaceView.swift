@@ -29,7 +29,7 @@ extension SpaceView: DetailsModel {
         self.readersLimit = details.readersLimit
         self.writersLimit = details.writersLimit
         self.sharedSpacesLimit = details.sharedSpacesLimit
-        self.chatId = details.chatId
+        self.chatId = details.spaceMainChatId
     }
     
     static var subscriptionKeys: [BundledRelationKey] = .builder {
@@ -44,7 +44,7 @@ extension SpaceView: DetailsModel {
         BundledRelationKey.readersLimit
         BundledRelationKey.writersLimit
         BundledRelationKey.sharedSpacesLimit
-        BundledRelationKey.chatId
+        BundledRelationKey.spaceMainChatId
     }
 }
 

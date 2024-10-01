@@ -93,6 +93,7 @@ public extension BundledRelationKey {
         .lastUsedDate,
         .mentions,
         .chatId,
+        .spaceMainChatId,
         .hasChat,
     ]
 }

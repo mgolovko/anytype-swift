@@ -377,6 +377,9 @@ public enum BundledRelationKey: String, Sendable {
     /// Chat id
     case chatId = "chatId"
 
+    /// Space main chat
+    case spaceMainChatId = "spaceMainChatId"
+
     /// Objects that are mentioned in blocks of this object
     case mentions = "mentions"
 }
