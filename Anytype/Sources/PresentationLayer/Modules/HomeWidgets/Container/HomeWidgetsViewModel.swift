@@ -74,23 +74,26 @@ final class HomeWidgetsViewModel: ObservableObject {
     }
     
     func fetchChatObject() async throws {
-        let request = SearchRequest(filters: [SearchHelper.spaceId(spaceId)], sorts: [], fullText: "CHAT HOME OBJECT", keys: [], limit: 1)
-        let result = try await searchMiddleService.search(data: request)
-        if let chatObject = result.first, chatObject.name == "CHAT HOME OBJECT" {
-            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
-        } else {
-            let chatObject =  try await objectActionService.createObject(
-                name: "CHAT HOME OBJECT",
-                typeUniqueKey: .chat,
-                shouldDeleteEmptyObject: false,
-                shouldSelectType: false,
-                shouldSelectTemplate: false,
-                spaceId: spaceId,
-                origin: .none,
-                templateId: nil
-            )
-            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
-        }
+        guard let space, let chatId = space.chatId else { return }
+        chatData = EditorDiscussionObject(objectId: chatId, spaceId: space.targetSpaceId)
+        
+//        let request = SearchRequest(filters: [SearchHelper.spaceId(spaceId)], sorts: [], fullText: "CHAT HOME OBJECT", keys: [], limit: 1)
+//        let result = try await searchMiddleService.search(data: request)
+//        if let chatObject = result.first, chatObject.name == "CHAT HOME OBJECT" {
+//            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
+//        } else {
+//            let chatObject =  try await objectActionService.createObject(
+//                name: "CHAT HOME OBJECT",
+//                typeUniqueKey: .chat,
+//                shouldDeleteEmptyObject: false,
+//                shouldSelectType: false,
+//                shouldSelectTemplate: false,
+//                spaceId: spaceId,
+//                origin: .none,
+//                templateId: nil
+//            )
+//            chatData = EditorDiscussionObject(objectId: chatObject.id, spaceId: chatObject.spaceId)
+//        }
     }
     
     func onAppear() {
